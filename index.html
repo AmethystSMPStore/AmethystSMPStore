@@ -526,7 +526,6 @@
     <script>
         let currentItemName = "";
         let currentBasePrice = 0;
-        let isTagProduct = false;
 
         function showSection(sectionId) {
             document.getElementById('mainMenu').style.display = 'none';
@@ -548,7 +547,6 @@
         function openCheckout(itemName, basePrice) {
             currentItemName = itemName;
             currentBasePrice = basePrice;
-            isTagProduct = false;
             
             document.getElementById('modalQtyInput').value = 1;
             updateModalView();
@@ -563,7 +561,6 @@
             }
             currentItemName = "Tag Personalizat: " + tagName;
             currentBasePrice = basePrice;
-            isTagProduct = true;
 
             document.getElementById('modalQtyInput').value = 1;
             updateModalView();
