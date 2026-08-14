@@ -166,41 +166,6 @@
             box-shadow: 0 0 8px rgba(255, 105, 180, 0.4);
         }
 
-        .quantity-control {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .qty-btn {
-            background: #2b1b4d;
-            border: 1px solid #8a2be2;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.2s;
-        }
-
-        .qty-btn:hover {
-            background: #8a2be2;
-        }
-
-        .qty-input {
-            width: 45px;
-            text-align: center;
-            background: #130c22;
-            border: 1px solid #8a2be2;
-            color: white;
-            border-radius: 6px;
-            padding: 5px;
-            font-weight: bold;
-        }
-
         .buy-btn {
             background: linear-gradient(135deg, #8a2be2, #ba55d3);
             border: none;
@@ -211,6 +176,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+            margin-top: 10px;
         }
 
         .buy-btn:hover {
@@ -218,7 +184,7 @@
             box-shadow: 0 0 15px rgba(186, 85, 211, 0.8);
         }
 
-        /* Modal / Fereastră de Plată */
+        /* Modal / Fereastră de Plată & Cantitate */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -263,16 +229,53 @@
 
         .modal-details {
             color: #dcdcdc;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             line-height: 1.5;
+        }
+
+        .quantity-control-modal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .qty-btn {
+            background: #2b1b4d;
+            border: 1px solid #8a2be2;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: 0.2s;
+        }
+
+        .qty-btn:hover {
+            background: #8a2be2;
+        }
+
+        .qty-input {
+            width: 55px;
+            text-align: center;
+            background: #130c22;
+            border: 1px solid #8a2be2;
+            color: white;
+            border-radius: 8px;
+            padding: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
         }
 
         .paysafecard-box {
             background: #130c22;
             border: 2px solid #ff6600;
             border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
+            padding: 15px;
+            margin-top: 15px;
             cursor: pointer;
             transition: 0.3s;
             display: flex;
@@ -287,7 +290,7 @@
         }
 
         .paysafe-logo {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: bold;
             color: #ff6600;
             letter-spacing: 1px;
@@ -341,46 +344,26 @@
             <div class="item-card">
                 <div class="item-name" style="color: #ffd700;">Grad OG</div>
                 <div class="item-desc">Beneficii:<br>/kit<br>/grindstone<br>/repair<br>/anvil</div>
-                <div class="item-price"><span id="price-og" data-base="20">20</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('og', -1)">-</button>
-                    <input type="text" id="qty-og" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('og', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckout('Grad OG', 20, 'qty-og')">Cumpără</button>
+                <div class="item-price">20 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Grad OG', 20)">Cumpără</button>
             </div>
             <div class="item-card">
                 <div class="item-name" style="color: #00ffff;">Grad Nova</div>
                 <div class="item-desc">Beneficii:<br>/kit<br>/grindstone<br>/repair<br>/anvil</div>
-                <div class="item-price"><span id="price-nova" data-base="15">15</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('nova', -1)">-</button>
-                    <input type="text" id="qty-nova" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('nova', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckout('Grad Nova', 15, 'qty-nova')">Cumpără</button>
+                <div class="item-price">15 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Grad Nova', 15)">Cumpără</button>
             </div>
             <div class="item-card">
                 <div class="item-name" style="color: #00bfff;">Grad CPVP</div>
                 <div class="item-desc">Beneficii:<br>/kit<br>/grindstone<br>/repair<br>/anvil</div>
-                <div class="item-price"><span id="price-cpvp" data-base="5">5</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('cpvp', -1)">-</button>
-                    <input type="text" id="qty-cpvp" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('cpvp', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckout('Grad CPVP', 5, 'qty-cpvp')">Cumpără</button>
+                <div class="item-price">5 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Grad CPVP', 5)">Cumpără</button>
             </div>
             <div class="item-card">
                 <div class="item-name" style="color: #ff69b4;">Grad Amethyst</div>
                 <div class="item-desc">Beneficii:<br>/kit<br>/grindstone<br>/repair<br>/anvil</div>
-                <div class="item-price"><span id="price-amethyst" data-base="10">10</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('amethyst', -1)">-</button>
-                    <input type="text" id="qty-amethyst" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('amethyst', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckout('Grad Amethyst', 10, 'qty-amethyst')">Cumpără</button>
+                <div class="item-price">10 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Grad Amethyst', 10)">Cumpără</button>
             </div>
         </div>
     </div>
@@ -392,35 +375,20 @@
             <div class="item-card">
                 <div class="item-name">Key Amethyst</div>
                 <div class="item-desc">Descuie cufărul legendar cu efecte mov neon.</div>
-                <div class="item-price"><span id="price-key1" data-base="3">3</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('key1', -1)">-</button>
-                    <input type="text" id="qty-key1" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('key1', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckout('Key Amethyst', 3, 'qty-key1')">Cumpără</button>
+                <div class="item-price">3 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Key Amethyst', 3)">Cumpără</button>
             </div>
             <div class="item-card">
                 <div class="item-name">Key Prime</div>
                 <div class="item-desc">Cheie specială pentru recompense unice.</div>
-                <div class="item-price"><span id="price-key2" data-base="1">1</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('key2', -1)">-</button>
-                    <input type="text" id="qty-key2" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('key2', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckout('Key Prime', 1, 'qty-key2')">Cumpără</button>
+                <div class="item-price">1 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Key Prime', 1)">Cumpără</button>
             </div>
             <div class="item-card">
                 <div class="item-name">Key Crimson</div>
                 <div class="item-desc">Descuie arsenalul ascuns de luptă.</div>
-                <div class="item-price"><span id="price-key3" data-base="1">1</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('key3', -1)">-</button>
-                    <input type="text" id="qty-key3" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('key3', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckout('Key Crimson', 1, 'qty-key3')">Cumpără</button>
+                <div class="item-price">1 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Key Crimson', 1)">Cumpără</button>
             </div>
         </div>
     </div>
@@ -432,68 +400,38 @@
             <div class="item-card">
                 <div class="item-name">100 Shards</div>
                 <div class="item-desc">Fonduri rapide pentru magazinul din joc.</div>
-                <div class="item-price"><span id="price-p1" data-base="1">1</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('p1', -1)">-</button>
-                    <input type="text" id="qty-p1" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('p1', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckout('100 Shards', 1, 'qty-p1')">Cumpără</button>
+                <div class="item-price">1 euro</div>
+                <button class="buy-btn" onclick="openCheckout('100 Shards', 1)">Cumpără</button>
             </div>
             <div class="item-card">
                 <div class="item-name">500 Shards</div>
                 <div class="item-desc">Pachet avantajos de shards pentru upgrade-uri.</div>
-                <div class="item-price"><span id="price-p2" data-base="3">3</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('p2', -1)">-</button>
-                    <input type="text" id="qty-p2" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('p2', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckout('500 Shards', 3, 'qty-p2')">Cumpără</button>
+                <div class="item-price">3 euro</div>
+                <button class="buy-btn" onclick="openCheckout('500 Shards', 3)">Cumpără</button>
             </div>
             <div class="item-card">
                 <div class="item-name">750 Shards</div>
                 <div class="item-desc">Resurse extinse pentru dominație totală.</div>
-                <div class="item-price"><span id="price-p3" data-base="5">5</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('p3', -1)">-</button>
-                    <input type="text" id="qty-p3" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('p3', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckout('750 Shards', 5, 'qty-p3')">Cumpără</button>
+                <div class="item-price">5 euro</div>
+                <button class="buy-btn" onclick="openCheckout('750 Shards', 5)">Cumpără</button>
             </div>
             <div class="item-card">
                 <div class="item-name">1500 Shards</div>
                 <div class="item-desc">Pachetul clasic de shards pentru upgrade-uri mari.</div>
-                <div class="item-price"><span id="price-p4" data-base="10">10</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('p4', -1)">-</button>
-                    <input type="text" id="qty-p4" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('p4', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckout('1500 Shards', 10, 'qty-p4')">Cumpără</button>
+                <div class="item-price">10 euro</div>
+                <button class="buy-btn" onclick="openCheckout('1500 Shards', 10)">Cumpără</button>
             </div>
             <div class="item-card">
                 <div class="item-name">3000 Shards</div>
                 <div class="item-desc">Rezerve masive pentru jucătorii avansați.</div>
-                <div class="item-price"><span id="price-p5" data-base="15">15</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('p5', -1)">-</button>
-                    <input type="text" id="qty-p5" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('p5', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckout('3000 Shards', 15, 'qty-p5')">Cumpără</button>
+                <div class="item-price">15 euro</div>
+                <button class="buy-btn" onclick="openCheckout('3000 Shards', 15)">Cumpără</button>
             </div>
             <div class="item-card">
                 <div class="item-name">5000 Shards</div>
                 <div class="item-desc">Pachetul suprem pentru supremație absolută.</div>
-                <div class="item-price"><span id="price-p6" data-base="20">20</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('p6', -1)">-</button>
-                    <input type="text" id="qty-p6" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('p6', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckout('5000 Shards', 20, 'qty-p6')">Cumpără</button>
+                <div class="item-price">20 euro</div>
+                <button class="buy-btn" onclick="openCheckout('5000 Shards', 20)">Cumpără</button>
             </div>
         </div>
     </div>
@@ -505,79 +443,44 @@
             <div class="item-card">
                 <div class="item-name">Spawner Skeleton</div>
                 <div class="item-desc">Spawner pentru oase și experiență.</div>
-                <div class="item-price"><span id="price-s0" data-base="0.49">0.49</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQtyDecimal('s0', -0.49)">-</button>
-                    <input type="text" id="qty-s0" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQtyDecimal('s0', 0.49)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckoutDecimal('Spawner Skeleton', 0.49, 'qty-s0')">Cumpără</button>
+                <div class="item-price">0.49 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Spawner Skeleton', 0.49)">Cumpără</button>
             </div>
             <div class="item-card">
                 <div class="item-name">Cole x2</div>
                 <div class="item-desc">Spawner pentru producție de cărbune.</div>
-                <div class="item-price"><span id="price-s1" data-base="1">1</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('s1', -1)">-</button>
-                    <input type="text" id="qty-s1" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('s1', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckout('Cole x2', 1, 'qty-s1')">Cumpără</button>
+                <div class="item-price">1 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Cole x2', 1)">Cumpără</button>
             </div>
             <div class="item-card">
                 <div class="item-name">Spawner Iron</div>
                 <div class="item-desc">Spawner pentru producție de fier.</div>
-                <div class="item-price"><span id="price-s2" data-base="1">1</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('s2', -1)">-</button>
-                    <input type="text" id="qty-s2" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('s2', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckout('Spawner Iron', 1, 'qty-s2')">Cumpără</button>
+                <div class="item-price">1 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Spawner Iron', 1)">Cumpără</button>
             </div>
             <div class="item-card">
                 <div class="item-name">Spawner Gold</div>
                 <div class="item-desc">Spawner pentru resurse de aur.</div>
-                <div class="item-price"><span id="price-s3" data-base="1">1</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('s3', -1)">-</button>
-                    <input type="text" id="qty-s3" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('s3', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckout('Spawner Gold', 1, 'qty-s3')">Cumpără</button>
+                <div class="item-price">1 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Spawner Gold', 1)">Cumpără</button>
             </div>
             <div class="item-card">
                 <div class="item-name">Spawner Emerald</div>
                 <div class="item-desc">Spawner avansat pentru smaralde.</div>
-                <div class="item-price"><span id="price-s4" data-base="2">2</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('s4', -1)">-</button>
-                    <input type="text" id="qty-s4" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('s4', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckout('Spawner Emerald', 2, 'qty-s4')">Cumpără</button>
+                <div class="item-price">2 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Spawner Emerald', 2)">Cumpără</button>
             </div>
             <div class="item-card">
                 <div class="item-name">Spawner Diamond</div>
                 <div class="item-desc">Spawner suprem pentru diamante.</div>
-                <div class="item-price"><span id="price-s5" data-base="3">3</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('s5', -1)">-</button>
-                    <input type="text" id="qty-s5" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('s5', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckout('Spawner Diamond', 3, 'qty-s5')">Cumpără</button>
+                <div class="item-price">3 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Spawner Diamond', 3)">Cumpără</button>
             </div>
             <div class="item-card">
                 <div class="item-name">Spawner Netherite</div>
                 <div class="item-desc">Spawner ultra-rar pentru netherite.</div>
-                <div class="item-price"><span id="price-s6" data-base="20">20</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('s6', -1)">-</button>
-                    <input type="text" id="qty-s6" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('s6', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckout('Spawner Netherite', 20, 'qty-s6')">Cumpără</button>
+                <div class="item-price">20 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Spawner Netherite', 20)">Cumpără</button>
             </div>
         </div>
     </div>
@@ -590,13 +493,8 @@
                 <div class="item-name">Tag Personalizat</div>
                 <div class="item-desc">Scrie mai jos textul dorit pentru tag-ul tău pe chat:</div>
                 <input type="text" id="customTagName" class="tag-input-box" placeholder="Ex: [Rege], [Legend]">
-                <div class="item-price"><span id="price-t1" data-base="2">2</span> euro</div>
-                <div class="quantity-control">
-                    <button class="qty-btn" onclick="changeQty('t1', -1)">-</button>
-                    <input type="text" id="qty-t1" class="qty-input" value="1" readonly>
-                    <button class="qty-btn" onclick="changeQty('t1', 1)">+</button>
-                </div>
-                <button class="buy-btn" onclick="openCheckoutTag('qty-t1', 2)">Cumpără</button>
+                <div class="item-price">2 euro</div>
+                <button class="buy-btn" onclick="openCheckoutTag(2)">Cumpără</button>
             </div>
         </div>
     </div>
@@ -606,6 +504,15 @@
             <button class="modal-close" onclick="closeCheckout()">&times;</button>
             <div class="modal-title">Finalizează Comanda</div>
             <div class="modal-details" id="modalDetails"></div>
+            
+            <div class="quantity-control-modal">
+                <button class="qty-btn" onclick="changeModalQty(-1)">-</button>
+                <input type="text" id="modalQtyInput" class="qty-input" value="1" readonly>
+                <button class="qty-btn" onclick="changeModalQty(1)">+</button>
+            </div>
+
+            <div id="modalTotalPrice" style="margin-bottom: 20px; font-weight: bold;"></div>
+
             <div class="paysafecard-box" onclick="alert('Redirecționare către plata prin Paysafecard...')">
                 <span class="paysafe-logo">paysafecard</span>
             </div>
@@ -617,6 +524,10 @@
     </footer>
 
     <script>
+        let currentItemName = "";
+        let currentBasePrice = 0;
+        let isTagProduct = false;
+
         function showSection(sectionId) {
             document.getElementById('mainMenu').style.display = 'none';
             var sections = document.getElementsByClassName('page-section');
@@ -634,66 +545,48 @@
             document.getElementById('mainMenu').style.display = 'block';
         }
 
-        function changeQty(id, amount) {
-            var input = document.getElementById('qty-' + id);
-            var priceSpan = document.getElementById('price-' + id);
-            var basePrice = parseFloat(priceSpan.getAttribute('data-base'));
-            var currentQty = parseInt(input.value);
+        function openCheckout(itemName, basePrice) {
+            currentItemName = itemName;
+            currentBasePrice = basePrice;
+            isTagProduct = false;
             
-            currentQty += amount;
-            if (currentQty < 1) currentQty = 1;
-            
-            input.value = currentQty;
-            priceSpan.innerText = (basePrice * currentQty);
-        }
-
-        function changeQtyDecimal(id, baseStep) {
-            var input = document.getElementById('qty-' + id);
-            var priceSpan = document.getElementById('price-' + id);
-            var basePrice = parseFloat(priceSpan.getAttribute('data-base'));
-            var currentQty = parseInt(input.value);
-            
-            if (baseStep > 0) {
-                currentQty += 1;
-            } else {
-                currentQty -= 1;
-                if (currentQty < 1) currentQty = 1;
-            }
-            
-            input.value = currentQty;
-            priceSpan.innerText = (basePrice * currentQty).toFixed(2);
-        }
-
-        function openCheckout(itemName, basePrice, qtyInputId) {
-            var qty = document.getElementById(qtyInputId).value;
-            var total = (basePrice * qty).toFixed(2);
-            
-            document.getElementById('modalDetails').innerHTML = 
-                "Produs: <b>" + itemName + "</b><br>" +
-                "Cantitate: <b>" + qty + "</b><br>" +
-                "Total de plată: <b style='color:#ffd700; font-size:1.2rem;'>" + total + " euro</b><br><br>" +
-                "Alege metoda de plată disponibilă:";
-            
+            document.getElementById('modalQtyInput').value = 1;
+            updateModalView();
             document.getElementById('checkoutModal').style.display = 'flex';
         }
 
-        function openCheckoutTag(qtyInputId, basePrice) {
+        function openCheckoutTag(basePrice) {
             var tagName = document.getElementById('customTagName').value.trim();
             if(tagName === "") {
                 alert("Te rog să introduci un nume pentru tag!");
                 return;
             }
-            var qty = document.getElementById(qtyInputId).value;
-            var total = (basePrice * qty).toFixed(2);
-            
-            document.getElementById('modalDetails').innerHTML = 
-                "Produs: Tag Personalizat<br>" +
-                "Nume Tag: <b style='color:#00ffff;'>" + tagName + "</b><br>" +
-                "Cantitate: <b>" + qty + "</b><br>" +
-                "Total de plată: <b style='color:#ffd700; font-size:1.2rem;'>" + total + " euro</b><br><br>" +
-                "Alege metoda de plată disponibilă:";
-            
+            currentItemName = "Tag Personalizat: " + tagName;
+            currentBasePrice = basePrice;
+            isTagProduct = true;
+
+            document.getElementById('modalQtyInput').value = 1;
+            updateModalView();
             document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function changeModalQty(amount) {
+            var input = document.getElementById('modalQtyInput');
+            var qty = parseInt(input.value) + amount;
+            if (qty < 1) qty = 1;
+            input.value = qty;
+            updateModalView();
+        }
+
+        function updateModalView() {
+            var qty = parseInt(document.getElementById('modalQtyInput').value);
+            var total = (currentBasePrice * qty).toFixed(2);
+            
+            var detailsHtml = "Produs: <b>" + currentItemName + "</b><br>";
+            
+            document.getElementById('modalDetails').innerHTML = detailsHtml;
+            document.getElementById('modalTotalPrice').innerHTML = 
+                "Total de plată: <b style='color:#ffd700; font-size:1.3rem;'>" + total + " euro</b>";
         }
 
         function closeCheckout() {
