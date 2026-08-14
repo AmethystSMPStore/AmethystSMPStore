@@ -3,93 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AmethystSMP Store</title>
+    <title>Redirecționare către AmethystSMP Store...</title>
+    <meta http-equiv="refresh" content="2;url=https://link-ul-tau-de-store.tebex.io">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
         body {
             background-color: #0f0c1b;
             color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-
-        header {
+            height: 100vh;
+            margin: 0;
             text-align: center;
-            margin-bottom: 50px;
         }
 
         h1 {
-            font-size: 3.5rem;
             color: #b19cd9;
-            text-shadow: 0 0 20px rgba(177, 156, 217, 0.6);
-            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+            text-shadow: 0 0 15px rgba(177, 156, 217, 0.5);
         }
 
-        .store-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            width: 100%;
-            max-width: 1000px;
+        p {
+            color: #a399bd;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
         }
 
-        .store-card {
-            background: linear-gradient(135deg, #1f1835 0%, #130f24 100%);
-            border: 2px solid #52397d;
-            border-radius: 12px;
-            padding: 30px 20px;
-            text-align: center;
-            cursor: pointer;
+        a.btn {
+            background: linear-gradient(135deg, #52397d 0%, #342252 100%);
+            color: #ffffff;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            border: 2px solid #b19cd9;
+            font-weight: bold;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
 
-        .store-card:hover {
-            transform: translateY(-5px);
-            border-color: #b19cd9;
-            box-shadow: 0 6px 25px rgba(177, 156, 217, 0.3);
-        }
-
-        .store-card h2 {
-            color: #e0d1ff;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-
-        .store-card p {
-            color: #a399bd;
-            font-size: 0.95rem;
+        a.btn:hover {
+            background: linear-gradient(135deg, #624495 0%, #3f2963 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(177, 156, 217, 0.3);
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>AMETHYSTSMP STORE</h1>
-    </header>
+    <h1>AMETHYSTSMP STORE</h1>
+    <p>Te redirecționăm către magazin...</p>
+    
+    <a href="https://link-ul-tau-de-store.tebex.io" class="btn">Apasă aici dacă nu ești redirecționat</a>
 
-    <div class="store-container">
-        <div class="store-card">
-            <h2>Rank</h2>
-            <p>Obține avantaje și kit-uri exclusive</p>
-        </div>
-        <div class="store-card">
-            <h2>Shards</h2>
-            <p>Monedă valoroasă pentru magazin</p>
-        </div>
-        <div class="store-card">
-            <h2>Key</h2>
-            <p>Chei pentru cufere misterioase</p>
-        </div>
-        <div class="store-card">
-            <h2>Spawner</h2>
-            <p>Spawner-e pentru ferma ta</
+    <script>
+        setTimeout(function() {
+            window.location.href = "https://link-ul-tau-de-store.tebex.io";
+        }, 2000);
+    </script>
+
+</body>
+</html>
