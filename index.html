@@ -14,17 +14,89 @@
             text-align: center;
         }
 
-        h1 {
-            color: #ffffff;
-            margin-top: 20px;
-            font-size: 2.2rem;
-            text-shadow: 0 0 15px rgba(177, 156, 217, 0.5);
-            letter-spacing: 2px;
+        /* BANNER NOU / HEADER DETALIAT */
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
         }
 
-        .header-diamonds {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
+        .header-shard {
+            font-size: 3.5rem;
+            filter: drop-shadow(0 0 15px rgba(186, 85, 211, 0.8));
+            animation: floatShard 3s ease-in-out infinite;
+        }
+
+        .header-shard.right {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes floatShard {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.05); }
+        }
+
+        .header-titles {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin: 0;
+            font-size: 3rem;
+            text-shadow: 0 0 20px rgba(177, 156, 217, 0.7), 0 0 10px rgba(138, 43, 226, 0.5);
+            letter-spacing: 3px;
+        }
+
+        .header-subtitle {
+            color: #d8bfd8;
+            font-size: 1.1rem;
+            margin-top: 8px;
+            text-shadow: 0 0 10px rgba(216, 191, 216, 0.4);
+            letter-spacing: 1px;
+        }
+
+        /* STIL IP SERVER COPIABIL */
+        .server-ip-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #1c1135 0%, #0d0818 100%);
+            border: 2px solid #8a2be2;
+            padding: 10px 25px;
+            border-radius: 30px;
+            margin: 20px 0 35px 0;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .server-ip-box:hover {
+            border-color: #ff69b4;
+            box-shadow: 0 0 25px rgba(255, 105, 180, 0.6);
+            transform: scale(1.03);
+        }
+
+        .ip-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #00ffff;
+            letter-spacing: 1px;
+        }
+
+        .ip-copy-hint {
+            font-size: 0.85rem;
+            color: #aaa;
+            background: #2b1b4d;
+            padding: 4px 10px;
+            border-radius: 15px;
+            border: 1px solid #8a2be2;
         }
 
         #mainMenu {
@@ -37,7 +109,7 @@
             justify-content: center;
             gap: 20px;
             max-width: 900px;
-            margin: 40px auto 0 auto;
+            margin: 10px auto 0 auto;
             padding: 10px;
         }
 
@@ -305,8 +377,20 @@
 </head>
 <body>
 
-    <div class="header-diamonds">💎 AMETHYSTSMP STORE 💎</div>
-    <h1>AMETHYSTSMP STORE</h1>
+    <div class="header-container">
+        <div class="header-shard">💎</div>
+        <div class="header-titles">
+            <h1>AMETHYSTSMP</h1>
+            <div class="header-subtitle">Magazinul Oficial al Serverului</div>
+        </div>
+        <div class="header-shard right">💎</div>
+    </div>
+
+    <div class="server-ip-box" onclick="copyIP()" title="Click pentru a copia IP-ul!">
+        <span>🎮 IP:</span>
+        <span class="ip-text">play.amethyst-smp.ro</span>
+        <span class="ip-copy-hint" id="copyHint">Copiază IP</span>
+    </div>
 
     <div id="mainMenu">
         <div class="store-grid">
@@ -527,6 +611,17 @@
         let currentItemName = "";
         let currentBasePrice = 0;
 
+        function copyIP() {
+            navigator.clipboard.writeText("play.amethyst-smp.ro");
+            var hint = document.getElementById("copyHint");
+            hint.innerText = "Copiat!";
+            hint.style.color = "#00ffff";
+            setTimeout(() => {
+                hint.innerText = "Copiază IP";
+                hint.style.color = "#aaa";
+            }, 2000);
+        }
+
         function showSection(sectionId) {
             document.getElementById('mainMenu').style.display = 'none';
             var sections = document.getElementsByClassName('page-section');
@@ -576,7 +671,7 @@
         }
 
         function updateModalView() {
-            var qty = parseInt(document.getElementById('modalQtyInput').value);
+            var qty = parseInt(document.getElementById('modalQtyInput'].value);
             var total = (currentBasePrice * qty).toFixed(2);
             
             var detailsHtml = "Produs: <b>" + currentItemName + "</b><br>";
