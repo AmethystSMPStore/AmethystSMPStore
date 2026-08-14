@@ -99,10 +99,6 @@
             border: 1px solid #8a2be2;
         }
 
-        #mainMenu {
-            display: block;
-        }
-
         .store-grid {
             display: flex;
             flex-wrap: wrap;
@@ -126,7 +122,6 @@
             flex-direction: column;
             align-items: center;
             cursor: pointer;
-            text-decoration: none;
         }
 
         .store-card:hover {
@@ -161,6 +156,7 @@
             text-decoration: none;
             border-radius: 20px;
             font-weight: bold;
+            cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
         }
@@ -377,6 +373,7 @@
 </head>
 <body>
 
+    <!-- BANNER DETALIAT CU AMETHYST SHARDS ȘI TITLU MARE -->
     <div class="header-container">
         <div class="header-shard">💎</div>
         <div class="header-titles">
@@ -386,13 +383,15 @@
         <div class="header-shard right">💎</div>
     </div>
 
-    <div class="server-ip-box" onclick="copyIP()" title="Click pentru a copia IP-ul!">
+    <!-- IP SERVER COPIABIL -->
+    <div class="server-ip-box" onclick="copyIP()">
         <span>🎮 IP:</span>
         <span class="ip-text">play.amethyst-smp.ro</span>
         <span class="ip-copy-hint" id="copyHint">Copiază IP</span>
     </div>
 
-    <div id="mainMenu">
+    <!-- MENIUL PRINCIPAL -->
+    <div id="mainMenu" style="display: block;">
         <div class="store-grid">
             <div class="store-card" onclick="showSection('ranksSection')">
                 <div class="card-icon">🛡️</div>
@@ -421,8 +420,9 @@
         </div>
     </div>
 
+    <!-- 1. SECȚIUNEA GRADE -->
     <div id="ranksSection" class="page-section">
-        <a href="#" class="back-btn" onclick="showMain(); return false;">← Înapoi la meniu</a>
+        <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
         <div class="section-title">Grade Legendare</div>
         <div class="items-grid">
             <div class="item-card">
@@ -452,8 +452,9 @@
         </div>
     </div>
 
+    <!-- 2. SECȚIUNEA CHEI -->
     <div id="keysSection" class="page-section">
-        <a href="#" class="back-btn" onclick="showMain(); return false;">← Înapoi la meniu</a>
+        <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
         <div class="section-title">Chei de Cufăr</div>
         <div class="items-grid">
             <div class="item-card">
@@ -477,8 +478,9 @@
         </div>
     </div>
 
+    <!-- 3. SECȚIUNEA SHARDS -->
     <div id="shardsSection" class="page-section">
-        <a href="#" class="back-btn" onclick="showMain(); return false;">← Înapoi la meniu</a>
+        <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
         <div class="section-title">Pachete de Shards</div>
         <div class="items-grid">
             <div class="item-card">
@@ -520,8 +522,9 @@
         </div>
     </div>
 
+    <!-- 4. SECȚIUNEA SPAWNERE -->
     <div id="spawnersSection" class="page-section">
-        <a href="#" class="back-btn" onclick="showMain(); return false;">← Înapoi la meniu</a>
+        <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
         <div class="section-title">Spawnere Disponibile</div>
         <div class="items-grid">
             <div class="item-card">
@@ -569,8 +572,9 @@
         </div>
     </div>
 
+    <!-- 5. SECȚIUNEA TAGS -->
     <div id="tagsSection" class="page-section">
-        <a href="#" class="back-btn" onclick="showMain(); return false;">← Înapoi la meniu</a>
+        <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
         <div class="section-title">Tag-uri Exclusive</div>
         <div class="items-grid">
             <div class="item-card">
@@ -583,6 +587,7 @@
         </div>
     </div>
 
+    <!-- MODALUL DE PLATĂ & SELECTARE CANTITATE DUPĂ CLICK PE CUMPĂRĂ -->
     <div id="checkoutModal" class="modal-overlay">
         <div class="modal-content">
             <button class="modal-close" onclick="closeCheckout()">&times;</button>
@@ -629,7 +634,10 @@
             for (var i = 0; i < sections.length; i++) {
                 sections[i].style.display = 'none';
             }
-            document.getElementById(sectionId).style.display = 'block';
+            var target = document.getElementById(sectionId);
+            if (target) {
+                target.style.display = 'block';
+            }
         }
 
         function showMain() {
@@ -650,7 +658,8 @@
         }
 
         function openCheckoutTag(basePrice) {
-            var tagName = document.getElementById('customTagName').value.trim();
+            var inputElem = document.getElementById('customTagName');
+            var tagName = inputElem ? inputElem.value.trim() : "";
             if(tagName === "") {
                 alert("Te rog să introduci un nume pentru tag!");
                 return;
