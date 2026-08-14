@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AmethystSMP Store - Ranks</title>
+    <title>AmethystSMP Store</title>
     <style>
         body {
             background-color: #0f0c1b;
@@ -27,63 +27,74 @@
             font-size: 1.1rem;
         }
 
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 30px;
-            padding: 10px 20px;
-            background: #201535;
-            border: 2px solid #52397d;
-            color: #d1c4e9;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .back-btn:hover {
-            border-color: #b19cd9;
-            background: #2c1e48;
-        }
-
-        .ranks-container {
-            max-width: 600px;
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 900px;
             margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            padding: 10px;
         }
 
-        .rank-item {
+        .store-card {
             background: linear-gradient(135deg, #201535 0%, #130c22 100%);
             border: 2px solid #52397d;
-            padding: 20px;
             border-radius: 12px;
-            font-weight: bold;
+            padding: 30px 20px;
             color: #ffffff;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
         }
 
-        .rank-item:hover {
+        .store-card:hover {
             border-color: #b19cd9;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(177, 156, 217, 0.3);
+            background: linear-gradient(135deg, #2c1e48 0%, #18102b 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(177, 156, 217, 0.3);
+        }
+
+        .emoji {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #d1c4e9;
         }
     </style>
 </head>
 <body>
 
-    <a href="index.html" class="back-btn">⬅ Înapoi la Magazin</a>
-
-    <h1>GRADE DISPONIBILE</h1>
-    <p class="subtitle">Alege gradul preferat pentru AmethystSMP</p>
+    <h1>AMETHYSTSMP STORE</h1>
+    <p class="subtitle">Categorii disponibile în magazin</p>
     
-    <div class="ranks-container">
-        <div class="rank-item">✨ Grad OG</div>
-        <div class="rank-item">⭐ Grad Nova</div>
-        <div class="rank-item">💜 Grad Amethyst</div>
-        <div class="rank-item">⚔️ Grad CPVP</div>
+    <div class="store-grid">
+        <a href="ranks.html" class="store-card">
+            <div class="emoji">👑</div>
+            <div class="card-title">Ranks</div>
+        </a>
+
+        <div class="store-card">
+            <div class="emoji">💎</div>
+            <div class="card-title">Shards</div>
+        </div>
+
+        <div class="store-card">
+            <div class="emoji">🔑</div>
+            <div class="card-title">Key</div>
+        </div>
+
+        <div class="store-card">
+            <div class="emoji">📦</div>
+            <div class="card-title">Spawner</div>
+        </div>
     </div>
 
 </body>
