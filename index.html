@@ -148,6 +148,24 @@
             margin-bottom: 15px;
         }
 
+        .tag-input-box {
+            width: 80%;
+            padding: 8px 12px;
+            background: #130c22;
+            border: 1px solid #8a2be2;
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .tag-input-box:focus {
+            border-color: #ff69b4;
+            box-shadow: 0 0 8px rgba(255, 105, 180, 0.4);
+        }
+
         .quantity-control {
             display: flex;
             align-items: center;
@@ -287,7 +305,6 @@
     <div class="header-diamonds">💎 AMETHYSTSMP STORE 💎</div>
     <h1>AMETHYSTSMP STORE</h1>
 
-    <!-- MENIUL PRINCIPAL -->
     <div id="mainMenu">
         <div class="store-grid">
             <div class="store-card" onclick="showSection('ranksSection')">
@@ -317,7 +334,6 @@
         </div>
     </div>
 
-    <!-- 1. SECȚIUNEA GRADE -->
     <div id="ranksSection" class="page-section">
         <a href="#" class="back-btn" onclick="showMain(); return false;">← Înapoi la meniu</a>
         <div class="section-title">Grade Legendare</div>
@@ -369,7 +385,6 @@
         </div>
     </div>
 
-    <!-- 2. SECȚIUNEA CHEI -->
     <div id="keysSection" class="page-section">
         <a href="#" class="back-btn" onclick="showMain(); return false;">← Înapoi la meniu</a>
         <div class="section-title">Chei de Cufăr</div>
@@ -410,7 +425,6 @@
         </div>
     </div>
 
-    <!-- 3. SECȚIUNEA SHARDS -->
     <div id="shardsSection" class="page-section">
         <a href="#" class="back-btn" onclick="showMain(); return false;">← Înapoi la meniu</a>
         <div class="section-title">Pachete de Shards</div>
@@ -484,7 +498,6 @@
         </div>
     </div>
 
-    <!-- 4. SECȚIUNEA SPAWNERE -->
     <div id="spawnersSection" class="page-section">
         <a href="#" class="back-btn" onclick="showMain(); return false;">← Înapoi la meniu</a>
         <div class="section-title">Spawnere Disponibile</div>
@@ -569,26 +582,25 @@
         </div>
     </div>
 
-    <!-- 5. SECȚIUNEA TAGS -->
     <div id="tagsSection" class="page-section">
         <a href="#" class="back-btn" onclick="showMain(); return false;">← Înapoi la meniu</a>
         <div class="section-title">Tag-uri Exclusive</div>
         <div class="items-grid">
             <div class="item-card">
-                <div class="item-name">Tag [VIP]</div>
-                <div class="item-desc">Un tag special pentru chat.</div>
+                <div class="item-name">Tag Personalizat</div>
+                <div class="item-desc">Scrie mai jos textul dorit pentru tag-ul tău pe chat:</div>
+                <input type="text" id="customTagName" class="tag-input-box" placeholder="Ex: [Rege], [Legend]">
                 <div class="item-price"><span id="price-t1" data-base="2">2</span> euro</div>
                 <div class="quantity-control">
                     <button class="qty-btn" onclick="changeQty('t1', -1)">-</button>
                     <input type="text" id="qty-t1" class="qty-input" value="1" readonly>
                     <button class="qty-btn" onclick="changeQty('t1', 1)">+</button>
                 </div>
-                <button class="buy-btn" onclick="openCheckout('Tag [VIP]', 2, 'qty-t1')">Cumpără</button>
+                <button class="buy-btn" onclick="openCheckoutTag('qty-t1', 2)">Cumpără</button>
             </div>
         </div>
     </div>
 
-    <!-- MODALUL DE PLATĂ (PAYSAFECARD) -->
     <div id="checkoutModal" class="modal-overlay">
         <div class="modal-content">
             <button class="modal-close" onclick="closeCheckout()">&times;</button>
@@ -658,6 +670,25 @@
             
             document.getElementById('modalDetails').innerHTML = 
                 "Produs: <b>" + itemName + "</b><br>" +
+                "Cantitate: <b>" + qty + "</b><br>" +
+                "Total de plată: <b style='color:#ffd700; font-size:1.2rem;'>" + total + " euro</b><br><br>" +
+                "Alege metoda de plată disponibilă:";
+            
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function openCheckoutTag(qtyInputId, basePrice) {
+            var tagName = document.getElementById('customTagName').value.trim();
+            if(tagName === "") {
+                alert("Te rog să introduci un nume pentru tag!");
+                return;
+            }
+            var qty = document.getElementById(qtyInputId).value;
+            var total = (basePrice * qty).toFixed(2);
+            
+            document.getElementById('modalDetails').innerHTML = 
+                "Produs: Tag Personalizat<br>" +
+                "Nume Tag: <b style='color:#00ffff;'>" + tagName + "</b><br>" +
                 "Cantitate: <b>" + qty + "</b><br>" +
                 "Total de plată: <b style='color:#ffd700; font-size:1.2rem;'>" + total + " euro</b><br><br>" +
                 "Alege metoda de plată disponibilă:";
