@@ -287,6 +287,7 @@
     <div class="header-diamonds">💎 AMETHYSTSMP STORE 💎</div>
     <h1>AMETHYSTSMP STORE</h1>
 
+    <!-- MENIUL PRINCIPAL -->
     <div id="mainMenu">
         <div class="store-grid">
             <div class="store-card" onclick="showSection('ranksSection')">
@@ -299,9 +300,9 @@
                 <div class="card-title">Key</div>
             </div>
 
-            <div class="store-card" onclick="showSection('pointsSection')">
+            <div class="store-card" onclick="showSection('shardsSection')">
                 <div class="card-icon">💎</div>
-                <div class="card-title">Points</div>
+                <div class="card-title">Shards</div>
             </div>
 
             <div class="store-card" onclick="showSection('spawnersSection')">
@@ -316,6 +317,7 @@
         </div>
     </div>
 
+    <!-- 1. SECȚIUNEA GRADE -->
     <div id="ranksSection" class="page-section">
         <a href="#" class="back-btn" onclick="showMain(); return false;">← Înapoi la meniu</a>
         <div class="section-title">Grade Legendare</div>
@@ -367,6 +369,7 @@
         </div>
     </div>
 
+    <!-- 2. SECȚIUNEA CHEI -->
     <div id="keysSection" class="page-section">
         <a href="#" class="back-btn" onclick="showMain(); return false;">← Înapoi la meniu</a>
         <div class="section-title">Chei de Cufăr</div>
@@ -407,12 +410,13 @@
         </div>
     </div>
 
-    <div id="pointsSection" class="page-section">
+    <!-- 3. SECȚIUNEA SHARDS -->
+    <div id="shardsSection" class="page-section">
         <a href="#" class="back-btn" onclick="showMain(); return false;">← Înapoi la meniu</a>
-        <div class="section-title">Pachete de Puncte</div>
+        <div class="section-title">Pachete de Shards</div>
         <div class="items-grid">
             <div class="item-card">
-                <div class="item-name">100 Points</div>
+                <div class="item-name">100 Shards</div>
                 <div class="item-desc">Fonduri rapide pentru magazinul din joc.</div>
                 <div class="item-price"><span id="price-p1" data-base="1">1</span> euro</div>
                 <div class="quantity-control">
@@ -420,21 +424,21 @@
                     <input type="text" id="qty-p1" class="qty-input" value="1" readonly>
                     <button class="qty-btn" onclick="changeQty('p1', 1)">+</button>
                 </div>
-                <button class="buy-btn" onclick="openCheckout('100 Points', 1, 'qty-p1')">Cumpără</button>
+                <button class="buy-btn" onclick="openCheckout('100 Shards', 1, 'qty-p1')">Cumpără</button>
             </div>
             <div class="item-card">
-                <div class="item-name">500 Points</div>
-                <div class="item-desc">Pachet avantajos de puncte pentru upgrade-uri.</div>
+                <div class="item-name">500 Shards</div>
+                <div class="item-desc">Pachet avantajos de shards pentru upgrade-uri.</div>
                 <div class="item-price"><span id="price-p2" data-base="3">3</span> euro</div>
                 <div class="quantity-control">
                     <button class="qty-btn" onclick="changeQty('p2', -1)">-</button>
                     <input type="text" id="qty-p2" class="qty-input" value="1" readonly>
                     <button class="qty-btn" onclick="changeQty('p2', 1)">+</button>
                 </div>
-                <button class="buy-btn" onclick="openCheckout('500 Points', 3, 'qty-p2')">Cumpără</button>
+                <button class="buy-btn" onclick="openCheckout('500 Shards', 3, 'qty-p2')">Cumpără</button>
             </div>
             <div class="item-card">
-                <div class="item-name">750 Points</div>
+                <div class="item-name">750 Shards</div>
                 <div class="item-desc">Resurse extinse pentru dominație totală.</div>
                 <div class="item-price"><span id="price-p3" data-base="5">5</span> euro</div>
                 <div class="quantity-control">
@@ -442,21 +446,21 @@
                     <input type="text" id="qty-p3" class="qty-input" value="1" readonly>
                     <button class="qty-btn" onclick="changeQty('p3', 1)">+</button>
                 </div>
-                <button class="buy-btn" onclick="openCheckout('750 Points', 5, 'qty-p3')">Cumpără</button>
+                <button class="buy-btn" onclick="openCheckout('750 Shards', 5, 'qty-p3')">Cumpără</button>
             </div>
             <div class="item-card">
-                <div class="item-name">1500 Points</div>
-                <div class="item-desc">Pachetul clasic de puncte pentru upgrade-uri mari.</div>
+                <div class="item-name">1500 Shards</div>
+                <div class="item-desc">Pachetul clasic de shards pentru upgrade-uri mari.</div>
                 <div class="item-price"><span id="price-p4" data-base="10">10</span> euro</div>
                 <div class="quantity-control">
                     <button class="qty-btn" onclick="changeQty('p4', -1)">-</button>
                     <input type="text" id="qty-p4" class="qty-input" value="1" readonly>
                     <button class="qty-btn" onclick="changeQty('p4', 1)">+</button>
                 </div>
-                <button class="buy-btn" onclick="openCheckout('1500 Points', 10, 'qty-p4')">Cumpără</button>
+                <button class="buy-btn" onclick="openCheckout('1500 Shards', 10, 'qty-p4')">Cumpără</button>
             </div>
             <div class="item-card">
-                <div class="item-name">3000 Points</div>
+                <div class="item-name">3000 Shards</div>
                 <div class="item-desc">Rezerve masive pentru jucătorii avansați.</div>
                 <div class="item-price"><span id="price-p5" data-base="15">15</span> euro</div>
                 <div class="quantity-control">
@@ -464,10 +468,10 @@
                     <input type="text" id="qty-p5" class="qty-input" value="1" readonly>
                     <button class="qty-btn" onclick="changeQty('p5', 1)">+</button>
                 </div>
-                <button class="buy-btn" onclick="openCheckout('3000 Points', 15, 'qty-p5')">Cumpără</button>
+                <button class="buy-btn" onclick="openCheckout('3000 Shards', 15, 'qty-p5')">Cumpără</button>
             </div>
             <div class="item-card">
-                <div class="item-name">5000 Points</div>
+                <div class="item-name">5000 Shards</div>
                 <div class="item-desc">Pachetul suprem pentru supremație absolută.</div>
                 <div class="item-price"><span id="price-p6" data-base="20">20</span> euro</div>
                 <div class="quantity-control">
@@ -475,11 +479,12 @@
                     <input type="text" id="qty-p6" class="qty-input" value="1" readonly>
                     <button class="qty-btn" onclick="changeQty('p6', 1)">+</button>
                 </div>
-                <button class="buy-btn" onclick="openCheckout('5000 Points', 20, 'qty-p6')">Cumpără</button>
+                <button class="buy-btn" onclick="openCheckout('5000 Shards', 20, 'qty-p6')">Cumpără</button>
             </div>
         </div>
     </div>
 
+    <!-- 4. SECȚIUNEA SPAWNERE -->
     <div id="spawnersSection" class="page-section">
         <a href="#" class="back-btn" onclick="showMain(); return false;">← Înapoi la meniu</a>
         <div class="section-title">Spawnere Disponibile</div>
@@ -564,6 +569,7 @@
         </div>
     </div>
 
+    <!-- 5. SECȚIUNEA TAGS -->
     <div id="tagsSection" class="page-section">
         <a href="#" class="back-btn" onclick="showMain(); return false;">← Înapoi la meniu</a>
         <div class="section-title">Tag-uri Exclusive</div>
@@ -582,6 +588,7 @@
         </div>
     </div>
 
+    <!-- MODALUL DE PLATĂ (PAYSAFECARD) -->
     <div id="checkoutModal" class="modal-overlay">
         <div class="modal-content">
             <button class="modal-close" onclick="closeCheckout()">&times;</button>
