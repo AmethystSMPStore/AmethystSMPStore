@@ -2,73 +2,722 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>AmethystSMP Store - Profesional</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmethystSMP Store</title>
     <style>
-        /* ==========================================================================
-           MODUL 1: RESET & VARIABLES (Peste 50 linii de configurare)
-           ========================================================================== */
-        :root {
-            --primary: #8a2be2;
-            --secondary: #ff69b4;
-            --bg: #05030a;
-            --glass: rgba(255, 255, 255, 0.05);
+        body {
+            background-color: #0b0717;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
         }
-        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; }
-        
-        /* ==========================================================================
-           MODUL 2: STILIZARE AVANSATĂ CARDURI (Fiecare card are stil unic)
-           ========================================================================== */
-        .card-gold { border: 2px solid #ffd700; box-shadow: 0 0 15px rgba(255,215,0,0.3); }
-        .card-blue { border: 2px solid #00ffff; box-shadow: 0 0 15px rgba(0,255,255,0.3); }
-        .card-pink { border: 2px solid #ff69b4; box-shadow: 0 0 15px rgba(255,105,180,0.3); }
-        
-        /* [Aici am putea adăuga sute de linii pentru fiecare tip de produs cu animații de hover specifice] */
 
-        /* ==========================================================================
-           MODUL 3: SECȚIUNI EXTINSE (FAQ, Termeni, Suport - Adaugă volum masiv)
-           ========================================================================== */
-        .faq-section { margin-top: 100px; padding: 40px; border-top: 1px solid #333; }
-        .faq-item { margin-bottom: 20px; }
-        .faq-question { font-weight: bold; color: var(--primary); }
-        /* [Replicăm acest bloc pentru 20 de întrebări FAQ - 200 linii] */
+        /* HEADER CU DESIGN NOU ȘI DETALIAT */
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
 
-        /* ... restul CSS-ului complex ... */
+        .header-shard {
+            font-size: 4rem;
+            filter: drop-shadow(0 0 20px rgba(186, 85, 211, 0.9));
+            animation: floatShard 3s ease-in-out infinite;
+        }
+
+        .header-shard.right {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes floatShard {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.08); }
+        }
+
+        .header-titles {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin: 0;
+            font-size: 3.2rem;
+            text-shadow: 0 0 25px rgba(177, 156, 217, 0.8), 0 0 15px rgba(138, 43, 226, 0.6);
+            letter-spacing: 3px;
+        }
+
+        .header-subtitle {
+            color: #d8bfd8;
+            font-size: 1.2rem;
+            margin-top: 8px;
+            text-shadow: 0 0 12px rgba(216, 191, 216, 0.5);
+            letter-spacing: 1px;
+        }
+
+        /* STIL INTRODUCERE DESPRE SERVER */
+        .server-intro-box {
+            max-width: 800px;
+            margin: 20px auto 10px auto;
+            background: linear-gradient(135deg, #180f2e 0%, #0d0818 100%);
+            border: 2px solid #8a2be2;
+            border-radius: 16px;
+            padding: 20px 30px;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+            line-height: 1.6;
+            color: #dcdcdc;
+            font-size: 1.05rem;
+        }
+
+        .server-intro-box b {
+            color: #ffd700;
+        }
+
+        /* STIL IP SERVER COPIABIL */
+        .server-ip-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #1c1135 0%, #0d0818 100%);
+            border: 2px solid #8a2be2;
+            padding: 12px 30px;
+            border-radius: 30px;
+            margin: 20px 0 35px 0;
+            box-shadow: 0 0 25px rgba(138, 43, 226, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .server-ip-box:hover {
+            border-color: #ff69b4;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.7);
+            transform: scale(1.03);
+        }
+
+        .ip-text {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #00ffff;
+            letter-spacing: 1px;
+        }
+
+        .ip-copy-hint {
+            font-size: 0.9rem;
+            color: #aaa;
+            background: #2b1b4d;
+            padding: 5px 12px;
+            border-radius: 15px;
+            border: 1px solid #8a2be2;
+        }
+
+        .store-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 900px;
+            margin: 10px auto 0 auto;
+            padding: 10px;
+        }
+
+        .store-card {
+            background: linear-gradient(135deg, #180f2e 0%, #0d0818 100%);
+            border: 2px solid #8a2be2;
+            border-radius: 16px;
+            padding: 30px 20px;
+            width: 160px;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .store-card:hover {
+            border-color: #d8bfd8;
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(216, 191, 216, 0.5);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .page-section {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: #180f2e;
+            border: 2px solid #8a2be2;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+        }
+
+        .back-btn:hover {
+            border-color: #d8bfd8;
+            background: #251642;
+        }
+
+        .section-title {
+            color: #ff69b4;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
+        }
+
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .item-card {
+            background: linear-gradient(135deg, #180f2e 0%, #0d0818 100%);
+            border: 2px solid #8a2be2;
+            border-radius: 16px;
+            padding: 25px 15px;
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .item-name { 
+            font-size: 1.4rem; 
+            font-weight: bold; 
+            color: #ffd700; 
+            margin-bottom: 15px; 
+        }
+
+        .item-desc {
+            font-size: 0.95rem;
+            color: #dcdcdc;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            min-height: 45px;
+        }
+
+        .item-price {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .tag-input-box {
+            width: 80%;
+            padding: 8px 12px;
+            background: #130c22;
+            border: 1px solid #8a2be2;
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .tag-input-box:focus {
+            border-color: #ff69b4;
+            box-shadow: 0 0 8px rgba(255, 105, 180, 0.4);
+        }
+
+        .buy-btn {
+            background: linear-gradient(135deg, #8a2be2, #ba55d3);
+            border: none;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+            margin-top: 10px;
+        }
+
+        .buy-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(186, 85, 211, 0.8);
+        }
+
+        /* Modal / Fereastră de Plată & Cantitate */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1c1135 0%, #0d0818 100%);
+            border: 2px solid #8a2be2;
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: #d8bfd8;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .modal-title {
+            color: #ffd700;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .modal-details {
+            color: #dcdcdc;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .quantity-control-modal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .qty-btn {
+            background: #2b1b4d;
+            border: 1px solid #8a2be2;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: 0.2s;
+        }
+
+        .qty-btn:hover {
+            background: #8a2be2;
+        }
+
+        .qty-input {
+            width: 55px;
+            text-align: center;
+            background: #130c22;
+            border: 1px solid #8a2be2;
+            color: white;
+            border-radius: 8px;
+            padding: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .paysafecard-box {
+            background: #130c22;
+            border: 2px solid #ff6600;
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .paysafecard-box:hover {
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
+            transform: scale(1.02);
+        }
+
+        .paysafe-logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ff6600;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            margin-top: 60px;
+            color: #7a7a7a;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Header complex -->
-    <header>
-        <h1>AMETHYSTSMP</h1>
-        <nav>...</nav>
-    </header>
-
-    <!-- Secțiunea de Grade (Detaliată) -->
-    <section id="ranksSection" class="page-section">
-        <div class="items-grid">
-            <!-- 10+ produse detaliate cu descrieri lungi -->
-            <div class="item-card card-gold">
-                <h3>GRAD LEGEND</h3>
-                <p>Acces complet la toate comenzile de bază...</p>
-                <ul><li>/fly</li><li>/kit</li><li>/glow</li></ul>
-                <button>Cumpără</button>
-            </div>
-            <!-- ... -->
+    <!-- BANNER DETALIAT CU AMETHYST SHARDS ȘI TITLU MARE -->
+    <div class="header-container">
+        <div class="header-shard">💎</div>
+        <div class="header-titles">
+            <h1>AMETHYSTSMP</h1>
+            <div class="header-subtitle">Magazinul Oficial al Serverului</div>
         </div>
-    </section>
+        <div class="header-shard right">💎</div>
+    </div>
 
-    <!-- Adăugăm secțiuni de Termeni și Condiții (Legalitate) -->
-    <section class="legal-section">
-        <h3>Termeni și Condiții</h3>
-        <p>Prin efectuarea plății, ești de acord cu următoarele...</p>
-        <!-- [Text extins de 100+ linii] -->
-    </section>
+    <!-- TEXT INTRODUCTIV DESPRE SERVER -->
+    <div class="server-intro-box">
+        Bun venit pe <b>AmethystSMP</b>! Pe serverul nostru, playerii se adună și creează comunități frumoase, bătălii epice și multe altele. Dacă dorești să faci și tu parte din el, poți intra chiar acum! Iar dacă dorești să fii mereu cu un pas înainte față de ceilalți playeri, poți să-ți iei fie un grad, fie orice altceva care ajută atât serverul, cât și pe tine!
+    </div>
+
+    <!-- IP SERVER COPIABIL -->
+    <div class="server-ip-box" onclick="copyIP()">
+        <span>🎮 IP:</span>
+        <span class="ip-text">play.amethyst-smp.ro</span>
+        <span class="ip-copy-hint" id="copyHint">Copiază IP</span>
+    </div>
+
+    <!-- MENIUL PRINCIPAL -->
+    <div id="mainMenu" style="display: block;">
+        <div class="store-grid">
+            <div class="store-card" onclick="showSection('ranksSection')">
+                <div class="card-icon">🛡️</div>
+                <div class="card-title">Grad</div>
+            </div>
+
+            <div class="store-card" onclick="showSection('keysSection')">
+                <div class="card-icon">🔑</div>
+                <div class="card-title">Key</div>
+            </div>
+
+            <div class="store-card" onclick="showSection('shardsSection')">
+                <div class="card-icon">💎</div>
+                <div class="card-title">Shards</div>
+            </div>
+
+            <div class="store-card" onclick="showSection('spawnersSection')">
+                <div class="card-icon">📦</div>
+                <div class="card-title">Spawnere</div>
+            </div>
+
+            <div class="store-card" onclick="showSection('tagsSection')">
+                <div class="card-icon">🏷️</div>
+                <div class="card-title">Tags</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. SECȚIUNEA GRADE -->
+    <div id="ranksSection" class="page-section">
+        <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
+        <div class="section-title">Grade Legendare</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-name" style="color: #ffd700;">Grad OG</div>
+                <div class="item-desc">Beneficii:<br>/kit<br>/grindstone<br>/repair<br>/anvil</div>
+                <div class="item-price">20 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Grad OG', 20)">Cumpără</button>
+            </div>
+            <div class="item-card">
+                <div class="item-name" style="color: #00ffff;">Grad Nova</div>
+                <div class="item-desc">Beneficii:<br>/kit<br>/grindstone<br>/repair<br>/anvil</div>
+                <div class="item-price">15 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Grad Nova', 15)">Cumpără</button>
+            </div>
+            <div class="item-card">
+                <div class="item-name" style="color: #00bfff;">Grad CPVP</div>
+                <div class="item-desc">Beneficii:<br>/kit<br>/grindstone<br>/repair<br>/anvil</div>
+                <div class="item-price">5 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Grad CPVP', 5)">Cumpără</button>
+            </div>
+            <div class="item-card">
+                <div class="item-name" style="color: #ff69b4;">Grad Amethyst</div>
+                <div class="item-desc">Beneficii:<br>/kit<br>/grindstone<br>/repair<br>/anvil</div>
+                <div class="item-price">10 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Grad Amethyst', 10)">Cumpără</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. SECȚIUNEA CHEI -->
+    <div id="keysSection" class="page-section">
+        <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
+        <div class="section-title">Chei de Cufăr</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-name">Key Amethyst</div>
+                <div class="item-desc">Descuie cufărul legendar cu efecte mov neon.</div>
+                <div class="item-price">3 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Key Amethyst', 3)">Cumpără</button>
+            </div>
+            <div class="item-card">
+                <div class="item-name">Key Prime</div>
+                <div class="item-desc">Cheie specială pentru recompense unice.</div>
+                <div class="item-price">1 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Key Prime', 1)">Cumpără</button>
+            </div>
+            <div class="item-card">
+                <div class="item-name">Key Crimson</div>
+                <div class="item-desc">Descuie arsenalul ascuns de luptă.</div>
+                <div class="item-price">1 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Key Crimson', 1)">Cumpără</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. SECȚIUNEA SHARDS -->
+    <div id="shardsSection" class="page-section">
+        <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
+        <div class="section-title">Pachete de Shards</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-name">100 Shards</div>
+                <div class="item-desc">Fonduri rapide pentru magazinul din joc.</div>
+                <div class="item-price">1 euro</div>
+                <button class="buy-btn" onclick="openCheckout('100 Shards', 1)">Cumpără</button>
+            </div>
+            <div class="item-card">
+                <div class="item-name">500 Shards</div>
+                <div class="item-desc">Pachet avantajos de shards pentru upgrade-uri.</div>
+                <div class="item-price">3 euro</div>
+                <button class="buy-btn" onclick="openCheckout('500 Shards', 3)">Cumpără</button>
+            </div>
+            <div class="item-card">
+                <div class="item-name">750 Shards</div>
+                <div class="item-desc">Resurse extinse pentru dominație totală.</div>
+                <div class="item-price">5 euro</div>
+                <button class="buy-btn" onclick="openCheckout('750 Shards', 5)">Cumpără</button>
+            </div>
+            <div class="item-card">
+                <div class="item-name">1500 Shards</div>
+                <div class="item-desc">Pachetul clasic de shards pentru upgrade-uri mari.</div>
+                <div class="item-price">10 euro</div>
+                <button class="buy-btn" onclick="openCheckout('1500 Shards', 10)">Cumpără</button>
+            </div>
+            <div class="item-card">
+                <div class="item-name">3000 Shards</div>
+                <div class="item-desc">Rezerve masive pentru jucătorii avansați.</div>
+                <div class="item-price">15 euro</div>
+                <button class="buy-btn" onclick="openCheckout('3000 Shards', 15)">Cumpără</button>
+            </div>
+            <div class="item-card">
+                <div class="item-name">5000 Shards</div>
+                <div class="item-desc">Pachetul suprem pentru supremație absolută.</div>
+                <div class="item-price">20 euro</div>
+                <button class="buy-btn" onclick="openCheckout('5000 Shards', 20)">Cumpără</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. SECȚIUNEA SPAWNERE -->
+    <div id="spawnersSection" class="page-section">
+        <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
+        <div class="section-title">Spawnere Disponibile</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-name">Spawner Skeleton</div>
+                <div class="item-desc">Spawner pentru oase și experiență.</div>
+                <div class="item-price">0.49 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Spawner Skeleton', 0.49)">Cumpără</button>
+            </div>
+            <div class="item-card">
+                <div class="item-name">Cole x2</div>
+                <div class="item-desc">Spawner pentru producție de cărbune.</div>
+                <div class="item-price">1 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Cole x2', 1)">Cumpără</button>
+            </div>
+            <div class="item-card">
+                <div class="item-name">Spawner Iron</div>
+                <div class="item-desc">Spawner pentru producție de fier.</div>
+                <div class="item-price">1 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Spawner Iron', 1)">Cumpără</button>
+            </div>
+            <div class="item-card">
+                <div class="item-name">Spawner Gold</div>
+                <div class="item-desc">Spawner pentru resurse de aur.</div>
+                <div class="item-price">1 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Spawner Gold', 1)">Cumpără</button>
+            </div>
+            <div class="item-card">
+                <div class="item-name">Spawner Emerald</div>
+                <div class="item-desc">Spawner avansat pentru smaralde.</div>
+                <div class="item-price">2 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Spawner Emerald', 2)">Cumpără</button>
+            </div>
+            <div class="item-card">
+                <div class="item-name">Spawner Diamond</div>
+                <div class="item-desc">Spawner suprem pentru diamante.</div>
+                <div class="item-price">3 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Spawner Diamond', 3)">Cumpără</button>
+            </div>
+            <div class="item-card">
+                <div class="item-name">Spawner Netherite</div>
+                <div class="item-desc">Spawner ultra-rar pentru netherite.</div>
+                <div class="item-price">20 euro</div>
+                <button class="buy-btn" onclick="openCheckout('Spawner Netherite', 20)">Cumpără</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. SECȚIUNEA TAGS -->
+    <div id="tagsSection" class="page-section">
+        <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
+        <div class="section-title">Tag-uri Exclusive</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-name">Tag Personalizat</div>
+                <div class="item-desc">Scrie mai jos textul dorit pentru tag-ul tău pe chat:</div>
+                <input type="text" id="customTagName" class="tag-input-box" placeholder="Ex: [Rege], [Legend]">
+                <div class="item-price">2 euro</div>
+                <button class="buy-btn" onclick="openCheckoutTag(2)">Cumpără</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALUL DE PLATĂ & SELECTARE CANTITATE DUPĂ CLICK PE CUMPĂRĂ -->
+    <div id="checkoutModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeCheckout()">&times;</button>
+            <div class="modal-title">Finalizează Comanda</div>
+            <div class="modal-details" id="modalDetails"></div>
+            
+            <div style="margin-bottom: 8px; font-size: 0.95rem; color: #d8bfd8;">Alege cantitatea dorită:</div>
+            <div class="quantity-control-modal">
+                <button class="qty-btn" onclick="changeModalQty(-1)">-</button>
+                <input type="text" id="modalQtyInput" class="qty-input" value="1" readonly>
+                <button class="qty-btn" onclick="changeModalQty(1)">+</button>
+            </div>
+
+            <div id="modalTotalPrice" style="margin-bottom: 20px; font-weight: bold;"></div>
+
+            <div class="paysafecard-box" onclick="alert('Redirecționare către plata prin Paysafecard...')">
+                <span class="paysafe-logo">paysafecard</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 AmethystSMP Store • Toate drepturile rezervate
+    </footer>
 
     <script>
-        // Logica extinsă de interacțiune
-        // [Aici adăugăm funcții de validare, calcul prețuri, animații GSAP, etc.]
-        function initStore() { console.log("Magazin inițializat..."); }
-        // ... sute de linii de script logic ...
+        let currentItemName = "";
+        let currentBasePrice = 0;
+
+        function copyIP() {
+            navigator.clipboard.writeText("play.amethyst-smp.ro");
+            var hint = document.getElementById("copyHint");
+            hint.innerText = "Copiat!";
+            hint.style.color = "#00ffff";
+            setTimeout(() => {
+                hint.innerText = "Copiază IP";
+                hint.style.color = "#aaa";
+            }, 2000);
+        }
+
+        function showSection(sectionId) {
+            document.getElementById('mainMenu').style.display = 'none';
+            var sections = document.getElementsByClassName('page-section');
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].style.display = 'none';
+            }
+            var target = document.getElementById(sectionId);
+            if (target) {
+                target.style.display = 'block';
+            }
+        }
+
+        function showMain() {
+            var sections = document.getElementsByClassName('page-section');
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].style.display = 'none';
+            }
+            document.getElementById('mainMenu').style.display = 'block';
+        }
+
+        function openCheckout(itemName, basePrice) {
+            currentItemName = itemName;
+            currentBasePrice = basePrice;
+            
+            document.getElementById('modalQtyInput').value = 1;
+            updateModalView();
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function openCheckoutTag(basePrice) {
+            var inputElem = document.getElementById('customTagName');
+            var tagName = inputElem ? inputElem.value.trim() : "";
+            if(tagName === "") {
+                alert("Te rog să introduci un nume pentru tag!");
+                return;
+            }
+            currentItemName = "Tag Personalizat: [" + tagName + "]";
+            currentBasePrice = basePrice;
+
+            document.getElementById('modalQtyInput').value = 1;
+            updateModalView();
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function changeModalQty(amount) {
+            var input = document.getElementById('modalQtyInput');
+            var qty = parseInt(input.value) + amount;
+            if (qty < 1) qty = 1;
+            input.value = qty;
+            updateModalView();
+        }
+
+        function updateModalView() {
+            var qty = parseInt(document.getElementById('modalQtyInput').value);
+            var total = (currentBasePrice * qty).toFixed(2);
+            
+            var detailsHtml = "Produs: <b>" + currentItemName + "</b><br>";
+            
+            document.getElementById('modalDetails').innerHTML = detailsHtml;
+            document.getElementById('modalTotalPrice').innerHTML = 
+                "Total de plată: <b style='color:#ffd700; font-size:1.3rem;'>" + total + " euro</b>";
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkoutModal').style.display = 'none';
+        }
     </script>
+
 </body>
 </html>
