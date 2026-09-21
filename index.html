@@ -14,7 +14,6 @@
             text-align: center;
         }
 
-        /* HEADER CU DESIGN NOU ȘI DETALIAT */
         .header-container {
             display: flex;
             align-items: center;
@@ -62,7 +61,6 @@
             letter-spacing: 1px;
         }
 
-        /* STIL INTRODUCERE DESPRE SERVER */
         .server-intro-box {
             max-width: 800px;
             margin: 20px auto 10px auto;
@@ -80,7 +78,6 @@
             color: #ffd700;
         }
 
-        /* STIL IP SERVER COPIABIL */
         .server-ip-box {
             display: inline-flex;
             align-items: center;
@@ -288,12 +285,14 @@
             background: linear-gradient(135deg, #1c1135 0%, #0d0818 100%);
             border: 2px solid #8a2be2;
             border-radius: 20px;
-            padding: 30px;
+            padding: 25px;
             width: 90%;
             max-width: 450px;
             text-align: center;
             box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
             position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .modal-close {
@@ -315,8 +314,57 @@
 
         .modal-details {
             color: #dcdcdc;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             line-height: 1.5;
+        }
+
+        .modal-input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .modal-input-group label {
+            display: block;
+            font-size: 0.9rem;
+            color: #d8bfd8;
+            margin-bottom: 5px;
+        }
+
+        .modal-input-field {
+            width: 100%;
+            padding: 8px 12px;
+            background: #130c22;
+            border: 1px solid #8a2be2;
+            color: white;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .modal-input-field:focus {
+            border-color: #ff69b4;
+            box-shadow: 0 0 8px rgba(255, 105, 180, 0.4);
+        }
+
+        .promo-container {
+            display: flex;
+            gap: 8px;
+        }
+
+        .promo-btn {
+            background: #2b1b4d;
+            border: 1px solid #8a2be2;
+            color: white;
+            padding: 0 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .promo-btn:hover {
+            background: #8a2be2;
         }
 
         .quantity-control-modal {
@@ -324,7 +372,7 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
 
         .qty-btn {
@@ -360,7 +408,7 @@
             background: #130c22;
             border: 2px solid #ff6600;
             border-radius: 12px;
-            padding: 15px;
+            padding: 12px;
             margin-top: 15px;
             cursor: pointer;
             transition: 0.3s;
@@ -376,7 +424,7 @@
         }
 
         .paysafe-logo {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: bold;
             color: #ff6600;
             letter-spacing: 1px;
@@ -391,7 +439,6 @@
 </head>
 <body>
 
-    <!-- BANNER DETALIAT CU AMETHYST SHARDS ȘI TITLU MARE -->
     <div class="header-container">
         <div class="header-shard">💎</div>
         <div class="header-titles">
@@ -401,19 +448,16 @@
         <div class="header-shard right">💎</div>
     </div>
 
-    <!-- TEXT INTRODUCTIV DESPRE SERVER -->
     <div class="server-intro-box">
         Bun venit pe <b>AmethystSMP</b>! Pe serverul nostru, playerii se adună și creează comunități frumoase, bătălii epice și multe altele. Dacă dorești să faci și tu parte din el, poți intra chiar acum! Iar dacă dorești să fii mereu cu un pas înainte față de ceilalți playeri, poți să-ți iei fie un grad, fie orice altceva care ajută atât serverul, cât și pe tine!
     </div>
 
-    <!-- IP SERVER COPIABIL -->
     <div class="server-ip-box" onclick="copyIP()">
         <span>🎮 IP:</span>
         <span class="ip-text">play.amethyst-smp.ro</span>
         <span class="ip-copy-hint" id="copyHint">Copiază IP</span>
     </div>
 
-    <!-- MENIUL PRINCIPAL -->
     <div id="mainMenu" style="display: block;">
         <div class="store-grid">
             <div class="store-card" onclick="showSection('ranksSection')">
@@ -610,23 +654,37 @@
         </div>
     </div>
 
-    <!-- MODALUL DE PLATĂ & SELECTARE CANTITATE DUPĂ CLICK PE CUMPĂRĂ -->
+    <!-- MODALUL DE PLATĂ & SELECTARE CANTITATE -->
     <div id="checkoutModal" class="modal-overlay">
         <div class="modal-content">
             <button class="modal-close" onclick="closeCheckout()">&times;</button>
             <div class="modal-title">Finalizează Comanda</div>
             <div class="modal-details" id="modalDetails"></div>
             
-            <div style="margin-bottom: 8px; font-size: 0.95rem; color: #d8bfd8;">Alege cantitatea dorită:</div>
+            <div class="modal-input-group">
+                <label>Nume jucător Minecraft:</label>
+                <input type="text" id="playerNameInput" class="modal-input-field" placeholder="Scrie Numele Tău">
+            </div>
+
+            <div style="margin-bottom: 8px; font-size: 0.9rem; color: #d8bfd8; text-align: left;">Alege cantitatea dorită:</div>
             <div class="quantity-control-modal">
                 <button class="qty-btn" onclick="changeModalQty(-1)">-</button>
                 <input type="text" id="modalQtyInput" class="qty-input" value="1" readonly>
                 <button class="qty-btn" onclick="changeModalQty(1)">+</button>
             </div>
 
+            <div class="modal-input-group">
+                <label>Cod de reducere:</label>
+                <div class="promo-container">
+                    <input type="text" id="promoCodeInput" class="modal-input-field" placeholder="Introdu codul">
+                    <button class="promo-btn" onclick="applyPromoCode()">Aplică</button>
+                </div>
+            </div>
+            <div id="promoMessage" style="font-size: 0.85rem; margin-bottom: 10px; text-align: left;"></div>
+
             <div id="modalTotalPrice" style="margin-bottom: 20px; font-weight: bold;"></div>
 
-            <div class="paysafecard-box" onclick="alert('Redirecționare către plata prin Paysafecard...')">
+            <div class="paysafecard-box" onclick="proceedToPayment()">
                 <span class="paysafe-logo">paysafecard</span>
             </div>
         </div>
@@ -639,6 +697,7 @@
     <script>
         let currentItemName = "";
         let currentBasePrice = 0;
+        let discountActive = false;
 
         function copyIP() {
             navigator.clipboard.writeText("play.amethyst-smp.ro");
@@ -674,9 +733,7 @@
         function openCheckout(itemName, basePrice) {
             currentItemName = itemName;
             currentBasePrice = basePrice;
-            
-            document.getElementById('modalQtyInput').value = 1;
-            updateModalView();
+            resetModal();
             document.getElementById('checkoutModal').style.display = 'flex';
         }
 
@@ -689,10 +746,17 @@
             }
             currentItemName = "Tag Personalizat: [" + tagName + "]";
             currentBasePrice = basePrice;
-
-            document.getElementById('modalQtyInput').value = 1;
-            updateModalView();
+            resetModal();
             document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function resetModal() {
+            document.getElementById('modalQtyInput').value = 1;
+            document.getElementById('playerNameInput').value = "";
+            document.getElementById('promoCodeInput').value = "";
+            document.getElementById('promoMessage').innerHTML = "";
+            discountActive = false;
+            updateModalView();
         }
 
         function changeModalQty(amount) {
@@ -703,15 +767,51 @@
             updateModalView();
         }
 
+        function applyPromoCode() {
+            var code = document.getElementById('promoCodeInput').value.trim();
+            var msg = document.getElementById('promoMessage');
+            
+            if (code.toLowerCase() === "mafia") {
+                discountActive = true;
+                msg.style.color = "#00ffff";
+                msg.innerHTML = "Cod aplicat cu succes! 20% reducere.";
+            } else {
+                discountActive = false;
+                msg.style.color = "#ff69b4";
+                msg.innerHTML = "Cod invalid!";
+            }
+            updateModalView();
+        }
+
         function updateModalView() {
             var qty = parseInt(document.getElementById('modalQtyInput').value);
-            var total = (currentBasePrice * qty).toFixed(2);
-            
+            var subtotal = currentBasePrice * qty;
+            var finalTotal = subtotal;
+
+            if (discountActive) {
+                finalTotal = subtotal * 0.8; // 20% reducere
+            }
+
             var detailsHtml = "Produs: <b>" + currentItemName + "</b><br>";
-            
             document.getElementById('modalDetails').innerHTML = detailsHtml;
-            document.getElementById('modalTotalPrice').innerHTML = 
-                "Total de plată: <b style='color:#ffd700; font-size:1.3rem;'>" + total + " euro</b>";
+
+            let priceText = "";
+            if (discountActive) {
+                priceText = "Total de plată: <span style='text-decoration: line-through; color: #aaa; font-size: 1rem;'>" + subtotal.toFixed(2) + " euro</span> <b style='color:#ffd700; font-size:1.3rem;'>" + finalTotal.toFixed(2) + " euro</b>";
+            } else {
+                priceText = "Total de plată: <b style='color:#ffd700; font-size:1.3rem;'>" + finalTotal.toFixed(2) + " euro</b>";
+            }
+
+            document.getElementById('modalTotalPrice').innerHTML = priceText;
+        }
+
+        function proceedToPayment() {
+            var playerName = document.getElementById('playerNameInput').value.trim();
+            if (playerName === "") {
+                alert("Te rog să introduci numele tău de Minecraft!");
+                return;
+            }
+            alert("Redirecționare către plata prin Paysafecard pentru jucătorul " + playerName + "...");
         }
 
         function closeCheckout() {
