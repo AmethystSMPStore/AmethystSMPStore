@@ -267,7 +267,7 @@
             box-shadow: 0 0 15px rgba(186, 85, 211, 0.8);
         }
 
-        /* Modal / Fereastră de Plată & Cantitate */
+        /* Modal / Fereastră de Plată */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -309,7 +309,7 @@
         .modal-title {
             color: #ffd700;
             font-size: 1.5rem;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .modal-details {
@@ -392,6 +392,7 @@
             background: #8a2be2;
         }
 
+        /* Cantitate editabilă (fără readonly) */
         .qty-input {
             width: 55px;
             text-align: center;
@@ -402,6 +403,12 @@
             padding: 8px;
             font-weight: bold;
             font-size: 1.1rem;
+            outline: none;
+        }
+
+        .qty-input:focus {
+            border-color: #ff69b4;
+            box-shadow: 0 0 8px rgba(255, 105, 180, 0.4);
         }
 
         .paysafecard-box {
@@ -470,9 +477,9 @@
                 <div class="card-title">Key</div>
             </div>
 
-            <div class="store-card" onclick="showSection('shardsSection')">
+            <div class="store-card" onclick="showSection('pointsSection')">
                 <div class="card-icon">💎</div>
-                <div class="card-title">Shards</div>
+                <div class="card-title">Points</div>
             </div>
 
             <div class="store-card" onclick="showSection('spawnersSection')">
@@ -487,7 +494,7 @@
         </div>
     </div>
 
-    <!-- 1. SECȚIUNEA GRADE -->
+    <!-- SECȚIUNEA GRADE -->
     <div id="ranksSection" class="page-section">
         <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
         <div class="section-title">Grade Legendare</div>
@@ -519,7 +526,7 @@
         </div>
     </div>
 
-    <!-- 2. SECȚIUNEA CHEI -->
+    <!-- SECȚIUNEA CHEI -->
     <div id="keysSection" class="page-section">
         <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
         <div class="section-title">Chei de Cufăr</div>
@@ -545,51 +552,57 @@
         </div>
     </div>
 
-    <!-- 3. SECȚIUNEA SHARDS -->
-    <div id="shardsSection" class="page-section">
+    <!-- SECȚIUNEA POINTS (Actualizată cu noile prețuri și puncte) -->
+    <div id="pointsSection" class="page-section">
         <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
-        <div class="section-title">Pachete de Shards</div>
+        <div class="section-title">Pachete de Points</div>
         <div class="items-grid">
             <div class="item-card">
-                <div class="item-name">100 Shards</div>
+                <div class="item-name">100 Points</div>
                 <div class="item-desc">Fonduri rapide pentru magazinul din joc.</div>
-                <div class="item-price">1 euro</div>
-                <button class="buy-btn" onclick="openCheckout('100 Shards', 1)">Cumpără</button>
+                <div class="item-price">0.29 euro</div>
+                <button class="buy-btn" onclick="openCheckout('100 Points', 0.29)">Cumpără</button>
             </div>
             <div class="item-card">
-                <div class="item-name">500 Shards</div>
-                <div class="item-desc">Pachet avantajos de shards pentru upgrade-uri.</div>
-                <div class="item-price">3 euro</div>
-                <button class="buy-btn" onclick="openCheckout('500 Shards', 3)">Cumpără</button>
+                <div class="item-name">500 Points</div>
+                <div class="item-desc">Pachet avantajos de points pentru upgrade-uri.</div>
+                <div class="item-price">1.99 euro</div>
+                <button class="buy-btn" onclick="openCheckout('500 Points', 1.99)">Cumpără</button>
             </div>
             <div class="item-card">
-                <div class="item-name">750 Shards</div>
+                <div class="item-name">750 Points</div>
                 <div class="item-desc">Resurse extinse pentru dominație totală.</div>
-                <div class="item-price">5 euro</div>
-                <button class="buy-btn" onclick="openCheckout('750 Shards', 5)">Cumpără</button>
+                <div class="item-price">2.49 euro</div>
+                <button class="buy-btn" onclick="openCheckout('750 Points', 2.49)">Cumpără</button>
             </div>
             <div class="item-card">
-                <div class="item-name">1500 Shards</div>
-                <div class="item-desc">Pachetul clasic de shards pentru upgrade-uri mari.</div>
-                <div class="item-price">10 euro</div>
-                <button class="buy-btn" onclick="openCheckout('1500 Shards', 10)">Cumpără</button>
+                <div class="item-name">1500 Points</div>
+                <div class="item-desc">Pachetul clasic de points pentru upgrade-uri mari.</div>
+                <div class="item-price">4.99 euro</div>
+                <button class="buy-btn" onclick="openCheckout('1500 Points', 4.99)">Cumpără</button>
             </div>
             <div class="item-card">
-                <div class="item-name">3000 Shards</div>
+                <div class="item-name">3000 Points</div>
                 <div class="item-desc">Rezerve masive pentru jucătorii avansați.</div>
-                <div class="item-price">15 euro</div>
-                <button class="buy-btn" onclick="openCheckout('3000 Shards', 15)">Cumpără</button>
+                <div class="item-price">9.99 euro</div>
+                <button class="buy-btn" onclick="openCheckout('3000 Points', 9.99)">Cumpără</button>
             </div>
             <div class="item-card">
-                <div class="item-name">5000 Shards</div>
+                <div class="item-name">5000 Points</div>
                 <div class="item-desc">Pachetul suprem pentru supremație absolută.</div>
-                <div class="item-price">20 euro</div>
-                <button class="buy-btn" onclick="openCheckout('5000 Shards', 20)">Cumpără</button>
+                <div class="item-price">14.99 euro</div>
+                <button class="buy-btn" onclick="openCheckout('5000 Points', 14.99)">Cumpără</button>
+            </div>
+            <div class="item-card">
+                <div class="item-name">10000 Points</div>
+                <div class="item-desc">Pachetul maxim pentru cei mai dedicați jucători.</div>
+                <div class="item-price">22.49 euro</div>
+                <button class="buy-btn" onclick="openCheckout('10000 Points', 22.49)">Cumpără</button>
             </div>
         </div>
     </div>
 
-    <!-- 4. SECȚIUNEA SPAWNERE -->
+    <!-- SECȚIUNEA SPAWNERE -->
     <div id="spawnersSection" class="page-section">
         <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
         <div class="section-title">Spawnere Disponibile</div>
@@ -639,7 +652,7 @@
         </div>
     </div>
 
-    <!-- 5. SECȚIUNEA TAGS -->
+    <!-- SECȚIUNEA TAGS -->
     <div id="tagsSection" class="page-section">
         <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
         <div class="section-title">Tag-uri Exclusive</div>
@@ -654,7 +667,7 @@
         </div>
     </div>
 
-    <!-- MODALUL DE PLATĂ & SELECTARE CANTITATE -->
+    <!-- MODALUL DE PLATĂ -->
     <div id="checkoutModal" class="modal-overlay">
         <div class="modal-content">
             <button class="modal-close" onclick="closeCheckout()">&times;</button>
@@ -669,14 +682,15 @@
             <div style="margin-bottom: 8px; font-size: 0.9rem; color: #d8bfd8; text-align: left;">Alege cantitatea dorită:</div>
             <div class="quantity-control-modal">
                 <button class="qty-btn" onclick="changeModalQty(-1)">-</button>
-                <input type="text" id="modalQtyInput" class="qty-input" value="1" readonly>
+                <!-- Câmp editabil direct prin tastatură -->
+                <input type="number" id="modalQtyInput" class="qty-input" value="1" min="1" oninput="updateModalViewFromInput()">
                 <button class="qty-btn" onclick="changeModalQty(1)">+</button>
             </div>
 
             <div class="modal-input-group">
                 <label>Cod de reducere:</label>
                 <div class="promo-container">
-                    <input type="text" id="promoCodeInput" class="modal-input-field" placeholder="Introdu codul">
+                    <input type="text" id="promoCodeInput" class="modal-input-field" placeholder="Introdu codul (ex: mafia)">
                     <button class="promo-btn" onclick="applyPromoCode()">Aplică</button>
                 </div>
             </div>
@@ -761,9 +775,21 @@
 
         function changeModalQty(amount) {
             var input = document.getElementById('modalQtyInput');
-            var qty = parseInt(input.value) + amount;
+            var currentVal = parseInt(input.value);
+            if (isNaN(currentVal) || currentVal < 1) currentVal = 1;
+            var qty = currentVal + amount;
             if (qty < 1) qty = 1;
             input.value = qty;
+            updateModalView();
+        }
+
+        function updateModalViewFromInput() {
+            var input = document.getElementById('modalQtyInput');
+            var qty = parseInt(input.value);
+            if (isNaN(qty) || qty < 1) {
+                // Nu forțăm setarea la 1 imediat ca să poată tasta liber utilizatorul (de exemplu când șterge cifra), dar calculăm ca fiind minim 1
+                qty = 1;
+            }
             updateModalView();
         }
 
@@ -774,7 +800,7 @@
             if (code.toLowerCase() === "mafia") {
                 discountActive = true;
                 msg.style.color = "#00ffff";
-                msg.innerHTML = "Cod aplicat cu succes! 20% reducere.";
+                msg.innerHTML = "Cod aplicat cu succes! Ai primit 20% reducere.";
             } else {
                 discountActive = false;
                 msg.style.color = "#ff69b4";
@@ -784,12 +810,14 @@
         }
 
         function updateModalView() {
-            var qty = parseInt(document.getElementById('modalQtyInput').value);
+            var qtyInputVal = parseInt(document.getElementById('modalQtyInput').value);
+            var qty = (isNaN(qtyInputVal) || qtyInputVal < 1) ? 1 : qtyInputVal;
+            
             var subtotal = currentBasePrice * qty;
             var finalTotal = subtotal;
 
             if (discountActive) {
-                finalTotal = subtotal * 0.8; // 20% reducere
+                finalTotal = subtotal * 0.8; // Reducere de 20%
             }
 
             var detailsHtml = "Produs: <b>" + currentItemName + "</b><br>";
