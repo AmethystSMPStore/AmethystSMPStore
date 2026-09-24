@@ -22,6 +22,37 @@
             margin-top: 25px;
             margin-bottom: 10px;
             flex-wrap: wrap;
+            position: relative;
+        }
+
+        /* Stilul butonului de coș flotant / în header */
+        .cart-icon-btn {
+            background: linear-gradient(135deg, #1c1135 0%, #0d0818 100%);
+            border: 2px solid #8a2be2;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
+            transition: 0.3s;
+        }
+
+        .cart-icon-btn:hover {
+            border-color: #ff69b4;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+            transform: scale(1.05);
+        }
+
+        .cart-badge {
+            background: #ff69b4;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 50%;
+            font-size: 0.85rem;
         }
 
         .header-shard {
@@ -249,25 +280,41 @@
             box-shadow: 0 0 8px rgba(255, 105, 180, 0.4);
         }
 
+        .btn-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
         .buy-btn {
             background: linear-gradient(135deg, #8a2be2, #ba55d3);
             border: none;
             color: white;
-            padding: 10px 30px;
+            padding: 8px 16px;
             border-radius: 20px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
-            margin-top: 10px;
         }
 
-        .buy-btn:hover {
+        .buy-btn:hover, .cart-add-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 0 15px rgba(186, 85, 211, 0.8);
         }
 
-        /* Modal / Fereastră de Plată */
+        .cart-add-btn {
+            background: linear-gradient(135deg, #2b1b4d, #4a2e80);
+            border: 1px solid #8a2be2;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Modal / Fereastră */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -316,6 +363,25 @@
             color: #dcdcdc;
             margin-bottom: 15px;
             line-height: 1.5;
+            text-align: left;
+        }
+
+        .cart-item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #130c22;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #8a2be2;
+            font-size: 0.9rem;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .modal-input-group {
@@ -379,12 +445,12 @@
             background: #2b1b4d;
             border: 1px solid #8a2be2;
             color: white;
-            width: 35px;
-            height: 35px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             cursor: pointer;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: 0.2s;
         }
 
@@ -392,23 +458,17 @@
             background: #8a2be2;
         }
 
-        /* Cantitate editabilă (fără readonly) */
         .qty-input {
-            width: 55px;
+            width: 45px;
             text-align: center;
             background: #130c22;
             border: 1px solid #8a2be2;
             color: white;
             border-radius: 8px;
-            padding: 8px;
+            padding: 5px;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1rem;
             outline: none;
-        }
-
-        .qty-input:focus {
-            border-color: #ff69b4;
-            box-shadow: 0 0 8px rgba(255, 105, 180, 0.4);
         }
 
         .paysafecard-box {
@@ -453,6 +513,11 @@
             <div class="header-subtitle">Magazinul Oficial al Serverului</div>
         </div>
         <div class="header-shard right">💎</div>
+        
+        <!-- Buton Coș de Cumpărături -->
+        <button class="cart-icon-btn" onclick="openCartModal()">
+            🛒 Coș <span class="cart-badge" id="cartCount">0</span>
+        </button>
     </div>
 
     <div class="server-intro-box">
@@ -503,25 +568,37 @@
                 <div class="item-name" style="color: #ffd700;">Grad OG</div>
                 <div class="item-desc">Beneficii:<br>/kit<br>/grindstone<br>/repair<br>/anvil</div>
                 <div class="item-price">20 euro</div>
-                <button class="buy-btn" onclick="openCheckout('Grad OG', 20)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Grad OG', 20)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Grad OG', 20)">+ Coș</button>
+                </div>
             </div>
             <div class="item-card">
                 <div class="item-name" style="color: #00ffff;">Grad Nova</div>
                 <div class="item-desc">Beneficii:<br>/kit<br>/grindstone<br>/repair<br>/anvil</div>
                 <div class="item-price">15 euro</div>
-                <button class="buy-btn" onclick="openCheckout('Grad Nova', 15)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Grad Nova', 15)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Grad Nova', 15)">+ Coș</button>
+                </div>
             </div>
             <div class="item-card">
                 <div class="item-name" style="color: #00bfff;">Grad CPVP</div>
                 <div class="item-desc">Beneficii:<br>/kit<br>/grindstone<br>/repair<br>/anvil</div>
                 <div class="item-price">5 euro</div>
-                <button class="buy-btn" onclick="openCheckout('Grad CPVP', 5)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Grad CPVP', 5)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Grad CPVP', 5)">+ Coș</button>
+                </div>
             </div>
             <div class="item-card">
                 <div class="item-name" style="color: #ff69b4;">Grad Amethyst</div>
                 <div class="item-desc">Beneficii:<br>/kit<br>/grindstone<br>/repair<br>/anvil</div>
                 <div class="item-price">10 euro</div>
-                <button class="buy-btn" onclick="openCheckout('Grad Amethyst', 10)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Grad Amethyst', 10)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Grad Amethyst', 10)">+ Coș</button>
+                </div>
             </div>
         </div>
     </div>
@@ -535,24 +612,33 @@
                 <div class="item-name">Key Amethyst</div>
                 <div class="item-desc">Descuie cufărul legendar cu efecte mov neon.</div>
                 <div class="item-price">3 euro</div>
-                <button class="buy-btn" onclick="openCheckout('Key Amethyst', 3)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Key Amethyst', 3)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Key Amethyst', 3)">+ Coș</button>
+                </div>
             </div>
             <div class="item-card">
                 <div class="item-name">Key Prime</div>
                 <div class="item-desc">Cheie specială pentru recompense unice.</div>
                 <div class="item-price">1 euro</div>
-                <button class="buy-btn" onclick="openCheckout('Key Prime', 1)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Key Prime', 1)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Key Prime', 1)">+ Coș</button>
+                </div>
             </div>
             <div class="item-card">
                 <div class="item-name">Key Crimson</div>
                 <div class="item-desc">Descuie arsenalul ascuns de luptă.</div>
                 <div class="item-price">1 euro</div>
-                <button class="buy-btn" onclick="openCheckout('Key Crimson', 1)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Key Crimson', 1)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Key Crimson', 1)">+ Coș</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- SECȚIUNEA POINTS (Actualizată cu noile prețuri și puncte) -->
+    <!-- SECȚIUNEA POINTS -->
     <div id="pointsSection" class="page-section">
         <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
         <div class="section-title">Pachete de Points</div>
@@ -561,43 +647,64 @@
                 <div class="item-name">100 Points</div>
                 <div class="item-desc">Fonduri rapide pentru magazinul din joc.</div>
                 <div class="item-price">0.29 euro</div>
-                <button class="buy-btn" onclick="openCheckout('100 Points', 0.29)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('100 Points', 0.29)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('100 Points', 0.29)">+ Coș</button>
+                </div>
             </div>
             <div class="item-card">
                 <div class="item-name">500 Points</div>
                 <div class="item-desc">Pachet avantajos de points pentru upgrade-uri.</div>
                 <div class="item-price">1.99 euro</div>
-                <button class="buy-btn" onclick="openCheckout('500 Points', 1.99)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('500 Points', 1.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('500 Points', 1.99)">+ Coș</button>
+                </div>
             </div>
             <div class="item-card">
                 <div class="item-name">750 Points</div>
                 <div class="item-desc">Resurse extinse pentru dominație totală.</div>
                 <div class="item-price">2.49 euro</div>
-                <button class="buy-btn" onclick="openCheckout('750 Points', 2.49)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('750 Points', 2.49)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('750 Points', 2.49)">+ Coș</button>
+                </div>
             </div>
             <div class="item-card">
                 <div class="item-name">1500 Points</div>
                 <div class="item-desc">Pachetul clasic de points pentru upgrade-uri mari.</div>
                 <div class="item-price">4.99 euro</div>
-                <button class="buy-btn" onclick="openCheckout('1500 Points', 4.99)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('1500 Points', 4.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('1500 Points', 4.99)">+ Coș</button>
+                </div>
             </div>
             <div class="item-card">
                 <div class="item-name">3000 Points</div>
                 <div class="item-desc">Rezerve masive pentru jucătorii avansați.</div>
                 <div class="item-price">9.99 euro</div>
-                <button class="buy-btn" onclick="openCheckout('3000 Points', 9.99)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('3000 Points', 9.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('3000 Points', 9.99)">+ Coș</button>
+                </div>
             </div>
             <div class="item-card">
                 <div class="item-name">5000 Points</div>
                 <div class="item-desc">Pachetul suprem pentru supremație absolută.</div>
                 <div class="item-price">14.99 euro</div>
-                <button class="buy-btn" onclick="openCheckout('5000 Points', 14.99)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('5000 Points', 14.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('500 Points', 14.99)">+ Coș</button>
+                </div>
             </div>
             <div class="item-card">
                 <div class="item-name">10000 Points</div>
                 <div class="item-desc">Pachetul maxim pentru cei mai dedicați jucători.</div>
                 <div class="item-price">22.49 euro</div>
-                <button class="buy-btn" onclick="openCheckout('10000 Points', 22.49)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('10000 Points', 22.49)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('10000 Points', 22.49)">+ Coș</button>
+                </div>
             </div>
         </div>
     </div>
@@ -611,43 +718,64 @@
                 <div class="item-name">Spawner Skeleton</div>
                 <div class="item-desc">Spawner pentru oase și experiență.</div>
                 <div class="item-price">0.49 euro</div>
-                <button class="buy-btn" onclick="openCheckout('Spawner Skeleton', 0.49)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Spawner Skeleton', 0.49)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Spawner Skeleton', 0.49)">+ Coș</button>
+                </div>
             </div>
             <div class="item-card">
                 <div class="item-name">Cole x2</div>
                 <div class="item-desc">Spawner pentru producție de cărbune.</div>
                 <div class="item-price">1 euro</div>
-                <button class="buy-btn" onclick="openCheckout('Cole x2', 1)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Cole x2', 1)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Cole x2', 1)">+ Coș</button>
+                </div>
             </div>
             <div class="item-card">
                 <div class="item-name">Spawner Iron</div>
                 <div class="item-desc">Spawner pentru producție de fier.</div>
                 <div class="item-price">1 euro</div>
-                <button class="buy-btn" onclick="openCheckout('Spawner Iron', 1)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Spawner Iron', 1)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Spawner Iron', 1)">+ Coș</button>
+                </div>
             </div>
             <div class="item-card">
                 <div class="item-name">Spawner Gold</div>
                 <div class="item-desc">Spawner pentru resurse de aur.</div>
                 <div class="item-price">1 euro</div>
-                <button class="buy-btn" onclick="openCheckout('Spawner Gold', 1)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Spawner Gold', 1)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Spawner Gold', 1)">+ Coș</button>
+                </div>
             </div>
             <div class="item-card">
                 <div class="item-name">Spawner Emerald</div>
                 <div class="item-desc">Spawner avansat pentru smaralde.</div>
                 <div class="item-price">2 euro</div>
-                <button class="buy-btn" onclick="openCheckout('Spawner Emerald', 2)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Spawner Emerald', 2)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Spawner Emerald', 2)">+ Coș</button>
+                </div>
             </div>
             <div class="item-card">
                 <div class="item-name">Spawner Diamond</div>
                 <div class="item-desc">Spawner suprem pentru diamante.</div>
                 <div class="item-price">3 euro</div>
-                <button class="buy-btn" onclick="openCheckout('Spawner Diamond', 3)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Spawner Diamond', 3)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Spawner Diamond', 3)">+ Coș</button>
+                </div>
             </div>
             <div class="item-card">
                 <div class="item-name">Spawner Netherite</div>
                 <div class="item-desc">Spawner ultra-rar pentru netherite.</div>
                 <div class="item-price">20 euro</div>
-                <button class="buy-btn" onclick="openCheckout('Spawner Netherite', 20)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Spawner Netherite', 20)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Spawner Netherite', 20)">+ Coș</button>
+                </div>
             </div>
         </div>
     </div>
@@ -662,16 +790,19 @@
                 <div class="item-desc">Scrie mai jos textul dorit pentru tag-ul tău pe chat:</div>
                 <input type="text" id="customTagName" class="tag-input-box" placeholder="Ex: [Rege], [Legend]">
                 <div class="item-price">2 euro</div>
-                <button class="buy-btn" onclick="openCheckoutTag(2)">Cumpără</button>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckoutTag(2)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addTagToCart(2)">+ Coș</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- MODALUL DE PLATĂ -->
+    <!-- MODALUL DE PLATĂ / COȘ -->
     <div id="checkoutModal" class="modal-overlay">
         <div class="modal-content">
             <button class="modal-close" onclick="closeCheckout()">&times;</button>
-            <div class="modal-title">Finalizează Comanda</div>
+            <div class="modal-title" id="modalTitleText">Finalizează Comanda</div>
             <div class="modal-details" id="modalDetails"></div>
             
             <div class="modal-input-group">
@@ -679,12 +810,14 @@
                 <input type="text" id="playerNameInput" class="modal-input-field" placeholder="Scrie Numele Tău">
             </div>
 
-            <div style="margin-bottom: 8px; font-size: 0.9rem; color: #d8bfd8; text-align: left;">Alege cantitatea dorită:</div>
-            <div class="quantity-control-modal">
-                <button class="qty-btn" onclick="changeModalQty(-1)">-</button>
-                <!-- Câmp editabil direct prin tastatură -->
-                <input type="number" id="modalQtyInput" class="qty-input" value="1" min="1" oninput="updateModalViewFromInput()">
-                <button class="qty-btn" onclick="changeModalQty(1)">+</button>
+            <!-- Cantitatea (afișată doar pentru cumpărare directă unică) -->
+            <div id="singleQtyContainer">
+                <div style="margin-bottom: 8px; font-size: 0.9rem; color: #d8bfd8; text-align: left;">Alege cantitatea dorită:</div>
+                <div class="quantity-control-modal">
+                    <button class="qty-btn" onclick="changeModalQty(-1)">-</button>
+                    <input type="number" id="modalQtyInput" class="qty-input" value="1" min="1" oninput="updateModalViewFromInput()">
+                    <button class="qty-btn" onclick="changeModalQty(1)">+</button>
+                </div>
             </div>
 
             <div class="modal-input-group">
@@ -709,6 +842,8 @@
     </footer>
 
     <script>
+        let cart = []; // Tabloul pentru coșul de cumpărături
+        let isCartCheckout = false; // Verifică dacă plata se face din coș sau direct
         let currentItemName = "";
         let currentBasePrice = 0;
         let discountActive = false;
@@ -744,10 +879,97 @@
             document.getElementById('mainMenu').style.display = 'block';
         }
 
+        // --- Funcții Coș de Cumpărături ---
+        function addToCart(name, price) {
+            let found = cart.find(item => item.name === name);
+            if (found) {
+                found.qty += 1;
+            } else {
+                cart.push({ name: name, price: price, qty: 1 });
+            }
+            updateCartCount();
+            alert("Ai adăugat " + name + " în coș!");
+        }
+
+        function addTagToCart(price) {
+            var inputElem = document.getElementById('customTagName');
+            var tagName = inputElem ? inputElem.value.trim() : "";
+            if(tagName === "") {
+                alert("Te rog să introduci un nume pentru tag!");
+                return;
+            }
+            let fullName = "Tag Personalizat: [" + tagName + "]";
+            addToCart(fullName, price);
+        }
+
+        function updateCartCount() {
+            let totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cartCount').innerText = totalCount;
+        }
+
+        function changeCartItemQty(index, amount) {
+            cart[index].qty += amount;
+            if (cart[index].qty < 1) {
+                cart.splice(index, 1);
+            }
+            updateCartCount();
+            renderCartModalDetails();
+        }
+
+        function removeCartItem(index) {
+            cart.splice(index, 1);
+            updateCartCount();
+            renderCartModalDetails();
+        }
+
+        function openCartModal() {
+            isCartCheckout = true;
+            document.getElementById('modalTitleText').innerText = "Coșul Tău de Cumpărături";
+            document.getElementById('singleQtyContainer').style.display = 'none';
+            resetModalCommon();
+            renderCartModalDetails();
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function renderCartModalDetails() {
+            let detailsDiv = document.getElementById('modalDetails');
+            if (cart.length === 0) {
+                detailsDiv.innerHTML = "Coșul tău este gol.";
+                document.getElementById('modalTotalPrice').innerHTML = "";
+                return;
+            }
+
+            let html = "";
+            let subtotal = 0;
+
+            cart.forEach((item, index) => {
+                let itemTotal = item.price * item.qty;
+                subtotal += itemTotal;
+                html += `
+                    <div class="cart-item-row">
+                        <div><b>${item.name}</b><br><small>${item.price} € x ${item.qty} = ${itemTotal.toFixed(2)} €</small></div>
+                        <div class="cart-item-actions">
+                            <button class="qty-btn" onclick="changeCartItemQty(${index}, -1)">-</button>
+                            <span>${item.qty}</span>
+                            <button class="qty-btn" onclick="changeCartItemQty(${index}, 1)">+</button>
+                            <button class="qty-btn" style="background:#8b0000; border-color:#ff4500;" onclick="removeCartItem(${index})">×</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            detailsDiv.innerHTML = html;
+            updateFinalPriceDisplay(subtotal);
+        }
+
+        // --- Cumpărare Directă ---
         function openCheckout(itemName, basePrice) {
+            isCartCheckout = false;
+            document.getElementById('modalTitleText').innerText = "Finalizează Comanda";
+            document.getElementById('singleQtyContainer').style.display = 'block';
             currentItemName = itemName;
             currentBasePrice = basePrice;
-            resetModal();
+            resetModalCommon();
             document.getElementById('checkoutModal').style.display = 'flex';
         }
 
@@ -758,19 +980,18 @@
                 alert("Te rog să introduci un nume pentru tag!");
                 return;
             }
-            currentItemName = "Tag Personalizat: [" + tagName + "]";
-            currentBasePrice = basePrice;
-            resetModal();
-            document.getElementById('checkoutModal').style.display = 'flex';
+            openCheckout("Tag Personalizat: [" + tagName + "]", basePrice);
         }
 
-        function resetModal() {
+        function resetModalCommon() {
             document.getElementById('modalQtyInput').value = 1;
             document.getElementById('playerNameInput').value = "";
             document.getElementById('promoCodeInput').value = "";
             document.getElementById('promoMessage').innerHTML = "";
             discountActive = false;
-            updateModalView();
+            if (!isCartCheckout) {
+                updateModalView();
+            }
         }
 
         function changeModalQty(amount) {
@@ -787,7 +1008,6 @@
             var input = document.getElementById('modalQtyInput');
             var qty = parseInt(input.value);
             if (isNaN(qty) || qty < 1) {
-                // Nu forțăm setarea la 1 imediat ca să poată tasta liber utilizatorul (de exemplu când șterge cifra), dar calculăm ca fiind minim 1
                 qty = 1;
             }
             updateModalView();
@@ -806,7 +1026,12 @@
                 msg.style.color = "#ff69b4";
                 msg.innerHTML = "Cod invalid!";
             }
-            updateModalView();
+
+            if (isCartCheckout) {
+                renderCartModalDetails();
+            } else {
+                updateModalView();
+            }
         }
 
         function updateModalView() {
@@ -814,22 +1039,20 @@
             var qty = (isNaN(qtyInputVal) || qtyInputVal < 1) ? 1 : qtyInputVal;
             
             var subtotal = currentBasePrice * qty;
-            var finalTotal = subtotal;
-
-            if (discountActive) {
-                finalTotal = subtotal * 0.8; // Reducere de 20%
-            }
-
             var detailsHtml = "Produs: <b>" + currentItemName + "</b><br>";
             document.getElementById('modalDetails').innerHTML = detailsHtml;
 
+            updateFinalPriceDisplay(subtotal);
+        }
+
+        function updateFinalPriceDisplay(subtotal) {
+            let finalTotal = discountActive ? subtotal * 0.8 : subtotal;
             let priceText = "";
             if (discountActive) {
                 priceText = "Total de plată: <span style='text-decoration: line-through; color: #aaa; font-size: 1rem;'>" + subtotal.toFixed(2) + " euro</span> <b style='color:#ffd700; font-size:1.3rem;'>" + finalTotal.toFixed(2) + " euro</b>";
             } else {
                 priceText = "Total de plată: <b style='color:#ffd700; font-size:1.3rem;'>" + finalTotal.toFixed(2) + " euro</b>";
             }
-
             document.getElementById('modalTotalPrice').innerHTML = priceText;
         }
 
@@ -837,6 +1060,10 @@
             var playerName = document.getElementById('playerNameInput').value.trim();
             if (playerName === "") {
                 alert("Te rog să introduci numele tău de Minecraft!");
+                return;
+            }
+            if (isCartCheckout && cart.length === 0) {
+                alert("Coșul tău este gol!");
                 return;
             }
             alert("Redirecționare către plata prin Paysafecard pentru jucătorul " + playerName + "...");
