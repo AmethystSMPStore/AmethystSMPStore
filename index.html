@@ -606,6 +606,15 @@
         <div class="section-title">Chei de Cufăr</div>
         <div class="items-grid">
             <div class="item-card">
+                <div class="item-name" style="color: #ff7518;">🎃 Key Halloween</div>
+                <div class="item-desc">Cheie înspăimântătoare cu recompense unice de sezon.</div>
+                <div class="item-price">1.49 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Key Halloween', 1.49)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Key Halloween', 1.49)">+ Coș</button>
+                </div>
+            </div>
+            <div class="item-card">
                 <div class="item-name">Key Amethyst</div>
                 <div class="item-desc">Descuie cufărul legendar cu efecte mov neon.</div>
                 <div class="item-price">2.99 euro</div>
@@ -875,198 +884,175 @@
             document.getElementById('mainMenu').style.display = 'block';
         }
 
-        function addToCart(name, price) {
-            let found = cart.find(item => item.name === name);
-            if (found) {
-                found.qty += 1;
-            } else {
-                cart.push({ name: name, price: price, qty: 1 });
-            }
-            updateCartCount();
-            alert("Ai adăugat " + name + " în coș!");
-        }
-
-        function addTagToCart(price) {
-            var inputElem = document.getElementById('customTagName');
-            var tagName = inputElem ? inputElem.value.trim() : "";
-            if(tagName === "") {
-                alert("Te rog să introduci un nume pentru tag!");
-                return;
-            }
-            let fullName = "Tag Personalizat: [" + tagName + "]";
-            addToCart(fullName, price);
-        }
-
-        function updateCartCount() {
+        function updateCartBadge() {
             let totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
             document.getElementById('cartCount').innerText = totalCount;
         }
 
-        function changeCartItemQty(index, amount) {
-            cart[index].qty += amount;
-            if (cart[index].qty < 1) {
-                cart.splice(index, 1);
+        function addToCart(name, price) {
+            let existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ name: name, price: price, qty: 1 });
             }
-            updateCartCount();
-            renderCartModalDetails();
+            updateCartBadge();
+            alert(`Ai adăugat "${name}" în coș!`);
         }
 
-        function removeCartItem(index) {
-            cart.splice(index, 1);
-            updateCartCount();
-            renderCartModalDetails();
+        function addTagToCart(price) {
+            let tagInput = document.getElementById('customTagName').value.trim();
+            if (!tagInput) {
+                alert("Te rog să introduci textul pentru tag!");
+                return;
+            }
+            let fullName = `Tag Personalizat: "${tagInput}"`;
+            addToCart(fullName, price);
+            document.getElementById('customTagName').value = "";
         }
 
-        function openCartModal() {
-            isCartCheckout = true;
-            document.getElementById('modalTitleText').innerText = "Coșul Tău de Cumpărături";
-            document.getElementById('singleQtyContainer').style.display = 'none';
-            resetModalCommon();
-            renderCartModalDetails();
+        function openCheckout(name, price) {
+            isCartCheckout = false;
+            currentItemName = name;
+            currentBasePrice = price;
+            discountActive = false;
+            document.getElementById('promoCodeInput').value = "";
+            document.getElementById('promoMessage').innerText = "";
+            document.getElementById('modalQtyInput').value = 1;
+            document.getElementById('singleQtyContainer').style.display = 'block';
+            document.getElementById('modalTitleText').innerText = "Finalizează Comanda";
+            document.getElementById('modalDetails').innerHTML = `Produs: <b>${name}</b><br>Preț unitar: <b>${price} euro</b>`;
+            updateModalPriceDisplay();
             document.getElementById('checkoutModal').style.display = 'flex';
         }
 
-        function renderCartModalDetails() {
-            let detailsDiv = document.getElementById('modalDetails');
-            if (cart.length === 0) {
-                detailsDiv.innerHTML = "Coșul tău este gol.";
-                document.getElementById('modalTotalPrice').innerHTML = "";
+        function openCheckoutTag(price) {
+            let tagInput = document.getElementById('customTagName').value.trim();
+            if (!tagInput) {
+                alert("Te rog să introduci textul pentru tag!");
                 return;
             }
+            openCheckout(`Tag Personalizat: "${tagInput}"`, price);
+        }
 
-            let html = "";
-            let subtotal = 0;
-
+        function openCartModal() {
+            if (cart.length === 0) {
+                alert("Coșul tău este gol!");
+                return;
+            }
+            isCartCheckout = true;
+            discountActive = false;
+            document.getElementById('promoCodeInput').value = "";
+            document.getElementById('promoMessage').innerText = "";
+            document.getElementById('singleQtyContainer').style.display = 'none';
+            document.getElementById('modalTitleText').innerText = "Coșul Tău de Cumpărături";
+            
+            let detailsHtml = "";
             cart.forEach((item, index) => {
-                let itemTotal = item.price * item.qty;
-                subtotal += itemTotal;
-                html += `
+                detailsHtml += `
                     <div class="cart-item-row">
-                        <div><b>${item.name}</b><br><small>${item.price} € x ${item.qty} = ${itemTotal.toFixed(2)} €</small></div>
+                        <span><b>${item.name}</b> (${item.price}€)</span>
                         <div class="cart-item-actions">
-                            <button class="qty-btn" onclick="changeCartItemQty(${index}, -1)">-</button>
-                            <span>${item.qty}</span>
-                            <button class="qty-btn" onclick="changeCartItemQty(${index}, 1)">+</button>
-                            <button class="qty-btn" style="background:#8b0000; border-color:#ff4500;" onclick="removeCartItem(${index})">×</button>
+                            <span>x${item.qty}</span>
+                            <button class="qty-btn" style="width:22px;height:22px;font-size:0.8rem;" onclick="changeCartQty(${index}, -1)">-</button>
+                            <button class="qty-btn" style="width:22px;height:22px;font-size:0.8rem;" onclick="changeCartQty(${index}, 1)">+</button>
+                            <button class="qty-btn" style="width:22px;height:22px;font-size:0.8rem;background:#500;" onclick="removeFromCart(${index})">×</button>
                         </div>
                     </div>
                 `;
             });
-
-            detailsDiv.innerHTML = html;
-            updateFinalPriceDisplay(subtotal);
-        }
-
-        function openCheckout(itemName, basePrice) {
-            isCartCheckout = false;
-            document.getElementById('modalTitleText').innerText = "Finalizează Comanda";
-            document.getElementById('singleQtyContainer').style.display = 'block';
-            currentItemName = itemName;
-            currentBasePrice = basePrice;
-            resetModalCommon();
+            document.getElementById('modalDetails').innerHTML = detailsHtml;
+            updateModalPriceDisplay();
             document.getElementById('checkoutModal').style.display = 'flex';
         }
 
-        function openCheckoutTag(basePrice) {
-            var inputElem = document.getElementById('customTagName');
-            var tagName = inputElem ? inputElem.value.trim() : "";
-            if(tagName === "") {
-                alert("Te rog să introduci un nume pentru tag!");
-                return;
-            }
-            openCheckout("Tag Personalizat: [" + tagName + "]", basePrice);
-        }
-
-        function resetModalCommon() {
-            document.getElementById('modalQtyInput').value = 1;
-            document.getElementById('playerNameInput').value = "";
-            document.getElementById('promoCodeInput').value = "";
-            document.getElementById('promoMessage').innerHTML = "";
-            discountActive = false;
-            if (!isCartCheckout) {
-                updateModalView();
-            }
-        }
-
         function changeModalQty(amount) {
-            var input = document.getElementById('modalQtyInput');
-            var currentVal = parseInt(input.value);
-            if (isNaN(currentVal) || currentVal < 1) currentVal = 1;
-            var qty = currentVal + amount;
-            if (qty < 1) qty = 1;
-            input.value = qty;
-            updateModalView();
+            let input = document.getElementById('modalQtyInput');
+            let val = parseInt(input.value) + amount;
+            if (val < 1) val = 1;
+            input.value = val;
+            updateModalPriceDisplay();
         }
 
         function updateModalViewFromInput() {
-            var input = document.getElementById('modalQtyInput');
-            var qty = parseInt(input.value);
-            if (isNaN(qty) || qty < 1) {
-                qty = 1;
+            let input = document.getElementById('modalQtyInput');
+            if (parseInt(input.value) < 1 || isNaN(input.value)) {
+                input.value = 1;
             }
-            updateModalView();
+            updateModalPriceDisplay();
+        }
+
+        function changeCartQty(index, amount) {
+            cart[index].qty += amount;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartBadge();
+            if (cart.length === 0) {
+                closeCheckout();
+            } else {
+                openCartModal();
+            }
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartBadge();
+            if (cart.length === 0) {
+                closeCheckout();
+            } else {
+                openCartModal();
+            }
         }
 
         function applyPromoCode() {
-            var code = document.getElementById('promoCodeInput').value.trim();
-            var msg = document.getElementById('promoMessage');
-            
-            if (code.toLowerCase() === "mafia") {
+            let code = document.getElementById('promoCodeInput').value.trim().toLowerCase();
+            let msg = document.getElementById('promoMessage');
+            if (code === "mafia") {
                 discountActive = true;
                 msg.style.color = "#00ffff";
-                msg.innerHTML = "Cod aplicat cu succes! Ai primit 20% reducere.";
+                msg.innerText = "Cod aplicat cu succes! Reducere de 10% activată.";
             } else {
                 discountActive = false;
-                msg.style.color = "#ff69b4";
-                msg.innerHTML = "Cod invalid!";
+                msg.style.color = "#ff4444";
+                msg.innerText = "Cod invalid!";
             }
+            updateModalPriceDisplay();
+        }
 
-            if (isCartCheckout) {
-                renderCartModalDetails();
+        function updateModalPriceDisplay() {
+            let total = 0;
+            if (!isCartCheckout) {
+                let qty = parseInt(document.getElementById('modalQtyInput').value) || 1;
+                total = currentBasePrice * qty;
             } else {
-                updateModalView();
+                total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
             }
-        }
 
-        function updateModalView() {
-            var qtyInputVal = parseInt(document.getElementById('modalQtyInput').value);
-            var qty = (isNaN(qtyInputVal) || qtyInputVal < 1) ? 1 : qtyInputVal;
-            
-            var subtotal = currentBasePrice * qty;
-            var detailsHtml = "Produs: <b>" + currentItemName + "</b><br>";
-            document.getElementById('modalDetails').innerHTML = detailsHtml;
-
-            updateFinalPriceDisplay(subtotal);
-        }
-
-        function updateFinalPriceDisplay(subtotal) {
-            let finalTotal = discountActive ? subtotal * 0.8 : subtotal;
-            let priceText = "";
             if (discountActive) {
-                priceText = "Total de plată: <span style='text-decoration: line-through; color: #aaa; font-size: 1rem;'>" + subtotal.toFixed(2) + " euro</span> <b style='color:#ffd700; font-size:1.3rem;'>" + finalTotal.toFixed(2) + " euro</b>";
-            } else {
-                priceText = "Total de plată: <b style='color:#ffd700; font-size:1.3rem;'>" + finalTotal.toFixed(2) + " euro</b>";
+                total = total * 0.9;
             }
-            document.getElementById('modalTotalPrice').innerHTML = priceText;
-        }
 
-        function proceedToPayment() {
-            var playerName = document.getElementById('playerNameInput').value.trim();
-            if (playerName === "") {
-                alert("Te rog să introduci numele tău de Minecraft!");
-                return;
-            }
-            if (isCartCheckout && cart.length === 0) {
-                alert("Coșul tău este gol!");
-                return;
-            }
-            alert("Redirecționare către plata prin Paysafecard pentru jucătorul " + playerName + "...");
+            document.getElementById('modalTotalPrice').innerHTML = `Total de plată: <span style="color: #00ffff; font-size: 1.2rem;">${total.toFixed(2)} euro</span>`;
         }
 
         function closeCheckout() {
             document.getElementById('checkoutModal').style.display = 'none';
         }
-    </script>
 
+        function proceedToPayment() {
+            let playerName = document.getElementById('playerNameInput').value.trim();
+            if (!playerName) {
+                alert("Te rog să introduci numele tău de jucător Minecraft!");
+                return;
+            }
+            alert(`Se procesează plata prin Paysafecard pentru jucătorul ${playerName}! Vei fi redirecționat.`);
+            closeCheckout();
+            if (isCartCheckout) {
+                cart = [];
+                updateCartBadge();
+            }
+        }
+    </script>
 </body>
 </html>
