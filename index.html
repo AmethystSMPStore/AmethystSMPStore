@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AmethystSMP Store</title>
+    <title>AmethystSMP Store - Halloween Edition</title>
     <style>
         body {
             background-color: #0b0717;
@@ -18,7 +18,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 25px;
+            gap: 20px;
             margin-top: 25px;
             margin-bottom: 10px;
             flex-wrap: wrap;
@@ -27,7 +27,7 @@
 
         .cart-icon-btn {
             background: linear-gradient(135deg, #1c1135 0%, #0d0818 100%);
-            border: 2px solid #8a2be2;
+            border: 2px solid #ff8c00;
             color: #ffffff;
             padding: 10px 20px;
             border-radius: 20px;
@@ -36,7 +36,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.4);
             transition: 0.3s;
         }
 
@@ -47,24 +47,24 @@
         }
 
         .cart-badge {
-            background: #ff69b4;
+            background: #ff8c00;
             color: white;
             padding: 2px 8px;
             border-radius: 50%;
             font-size: 0.85rem;
         }
 
-        .header-shard {
-            font-size: 4rem;
-            filter: drop-shadow(0 0 20px rgba(186, 85, 211, 0.9));
-            animation: floatShard 3s ease-in-out infinite;
+        .header-decoration {
+            font-size: 3.5rem;
+            filter: drop-shadow(0 0 20px rgba(255, 140, 0, 0.8));
+            animation: floatDeco 3s ease-in-out infinite;
         }
 
-        .header-shard.right {
+        .header-decoration.right {
             animation-delay: 1.5s;
         }
 
-        @keyframes floatShard {
+        @keyframes floatDeco {
             0%, 100% { transform: translateY(0) scale(1); }
             50% { transform: translateY(-10px) scale(1.08); }
         }
@@ -79,15 +79,15 @@
             color: #ffffff;
             margin: 0;
             font-size: 3.2rem;
-            text-shadow: 0 0 25px rgba(177, 156, 217, 0.8), 0 0 15px rgba(138, 43, 226, 0.6);
+            text-shadow: 0 0 25px rgba(255, 140, 0, 0.8), 0 0 15px rgba(138, 43, 226, 0.6);
             letter-spacing: 3px;
         }
 
         .header-subtitle {
-            color: #d8bfd8;
+            color: #ffb366;
             font-size: 1.2rem;
             margin-top: 8px;
-            text-shadow: 0 0 12px rgba(216, 191, 216, 0.5);
+            text-shadow: 0 0 12px rgba(255, 140, 0, 0.5);
             letter-spacing: 1px;
         }
 
@@ -95,17 +95,17 @@
             max-width: 800px;
             margin: 20px auto 10px auto;
             background: linear-gradient(135deg, #180f2e 0%, #0d0818 100%);
-            border: 2px solid #8a2be2;
+            border: 2px solid #ff8c00;
             border-radius: 16px;
             padding: 20px 30px;
-            box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.25);
             line-height: 1.6;
             color: #dcdcdc;
             font-size: 1.05rem;
         }
 
         .server-intro-box b {
-            color: #ffd700;
+            color: #ff8c00;
         }
 
         .server-ip-box {
@@ -113,11 +113,11 @@
             align-items: center;
             gap: 12px;
             background: linear-gradient(135deg, #1c1135 0%, #0d0818 100%);
-            border: 2px solid #8a2be2;
+            border: 2px solid #ff8c00;
             padding: 12px 30px;
             border-radius: 30px;
             margin: 20px 0 35px 0;
-            box-shadow: 0 0 25px rgba(138, 43, 226, 0.5);
+            box-shadow: 0 0 25px rgba(255, 140, 0, 0.4);
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -131,7 +131,7 @@
         .ip-text {
             font-size: 1.3rem;
             font-weight: bold;
-            color: #00ffff;
+            color: #ffb366;
             letter-spacing: 1px;
         }
 
@@ -141,7 +141,7 @@
             background: #2b1b4d;
             padding: 5px 12px;
             border-radius: 15px;
-            border: 1px solid #8a2be2;
+            border: 1px solid #ff8c00;
         }
 
         .store-grid {
@@ -170,9 +170,9 @@
         }
 
         .store-card:hover {
-            border-color: #d8bfd8;
+            border-color: #ff8c00;
             transform: translateY(-5px);
-            box-shadow: 0 0 25px rgba(216, 191, 216, 0.5);
+            box-shadow: 0 0 25px rgba(255, 140, 0, 0.5);
         }
 
         .card-icon {
@@ -207,15 +207,15 @@
         }
 
         .back-btn:hover {
-            border-color: #d8bfd8;
+            border-color: #ff8c00;
             background: #251642;
         }
 
         .section-title {
-            color: #ff69b4;
+            color: #ff8c00;
             font-size: 2rem;
             margin-bottom: 30px;
-            text-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
+            text-shadow: 0 0 10px rgba(255, 140, 0, 0.4);
         }
 
         .items-grid {
@@ -275,8 +275,8 @@
         }
 
         .tag-input-box:focus {
-            border-color: #ff69b4;
-            box-shadow: 0 0 8px rgba(255, 105, 180, 0.4);
+            border-color: #ff8c00;
+            box-shadow: 0 0 8px rgba(255, 140, 0, 0.4);
         }
 
         .btn-container {
@@ -286,7 +286,7 @@
         }
 
         .buy-btn {
-            background: linear-gradient(135deg, #8a2be2, #ba55d3);
+            background: linear-gradient(135deg, #ff8c00, #ff4500);
             border: none;
             color: white;
             padding: 8px 16px;
@@ -294,17 +294,17 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+            box-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
         }
 
         .buy-btn:hover, .cart-add-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(186, 85, 211, 0.8);
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.8);
         }
 
         .cart-add-btn {
             background: linear-gradient(135deg, #2b1b4d, #4a2e80);
-            border: 1px solid #8a2be2;
+            border: 1px solid #ff8c00;
             color: white;
             padding: 8px 16px;
             border-radius: 20px;
@@ -328,13 +328,13 @@
 
         .modal-content {
             background: linear-gradient(135deg, #1c1135 0%, #0d0818 100%);
-            border: 2px solid #8a2be2;
+            border: 2px solid #ff8c00;
             border-radius: 20px;
             padding: 25px;
             width: 90%;
             max-width: 450px;
             text-align: center;
-            box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
+            box-shadow: 0 0 30px rgba(255, 140, 0, 0.5);
             position: relative;
             max-height: 90vh;
             overflow-y: auto;
@@ -345,12 +345,714 @@
             top: 15px;
             right: 20px;
             font-size: 1.5rem;
-            color: #d8bfd8;
+            color: #ffb366;
             cursor: pointer;
             background: none;
             border: none;
         }
 
         .modal-title {
-            color: #ffd700;
-            font-size: 1.5rem
+            color: #ff8c00;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .modal-details {
+            color: #dcdcdc;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        .cart-item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #130c22;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #ff8c00;
+            font-size: 0.9rem;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .modal-input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .modal-input-group label {
+            display: block;
+            font-size: 0.9rem;
+            color: #ffb366;
+            margin-bottom: 5px;
+        }
+
+        .modal-input-field {
+            width: 100%;
+            padding: 8px 12px;
+            background: #130c22;
+            border: 1px solid #ff8c00;
+            color: white;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .modal-input-field:focus {
+            border-color: #ff69b4;
+            box-shadow: 0 0 8px rgba(255, 105, 180, 0.4);
+        }
+
+        .promo-container {
+            display: flex;
+            gap: 8px;
+        }
+
+        .promo-btn {
+            background: #2b1b4d;
+            border: 1px solid #ff8c00;
+            color: white;
+            padding: 0 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .promo-btn:hover {
+            background: #ff8c00;
+        }
+
+        .quantity-control-modal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .qty-btn {
+            background: #2b1b4d;
+            border: 1px solid #ff8c00;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .qty-btn:hover {
+            background: #ff8c00;
+        }
+
+        .qty-input {
+            width: 45px;
+            text-align: center;
+            background: #130c22;
+            border: 1px solid #ff8c00;
+            color: white;
+            border-radius: 8px;
+            padding: 5px;
+            font-weight: bold;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .paysafecard-box {
+            background: #130c22;
+            border: 2px solid #ff6600;
+            border-radius: 12px;
+            padding: 12px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .paysafecard-box:hover {
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
+            transform: scale(1.02);
+        }
+
+        .paysafe-logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ff6600;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            margin-top: 60px;
+            color: #7a7a7a;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <div class="header-decoration">🎃</div>
+        <div class="header-titles">
+            <h1>AMETHYSTSMP</h1>
+            <div class="header-subtitle">🔮 Magazinul Oficial • Ediție de Halloween 🎃</div>
+        </div>
+        <div class="header-decoration right">🎃</div>
+        
+        <button class="cart-icon-btn" onclick="openCartModal()">
+            🛒 Coș <span class="cart-badge" id="cartCount">0</span>
+        </button>
+    </div>
+
+    <div class="server-intro-box">
+        Bun venit pe <b>AmethystSMP</b>! Pe serverul nostru, playerii se adună și creează comunități frumoase, bătălii epice și multe altele. Cu ocazia <b>Halloween-ului</b>, ai parte de oferte și iteme unice de sezon! Dacă dorești să fii mereu cu un pas înainte față de ceilalți playeri, poți să-ți iei fie un grad, fie o cheie înspăimântătoare!
+    </div>
+
+    <div class="server-ip-box" onclick="copyIP()">
+        <span>🎮 IP:</span>
+        <span class="ip-text">play.amethyst-smp.ro</span>
+        <span class="ip-copy-hint" id="copyHint">Copiază IP</span>
+    </div>
+
+    <div id="mainMenu" style="display: block;">
+        <div class="store-grid">
+            <div class="store-card" onclick="showSection('ranksSection')">
+                <div class="card-icon">🛡️</div>
+                <div class="card-title">Grad</div>
+            </div>
+
+            <div class="store-card" onclick="showSection('keysSection')">
+                <div class="card-icon">🎃</div>
+                <div class="card-title">Key</div>
+            </div>
+
+            <div class="store-card" onclick="showSection('pointsSection')">
+                <div class="card-icon">💎</div>
+                <div class="card-title">Points</div>
+            </div>
+
+            <div class="store-card" onclick="showSection('spawnersSection')">
+                <div class="card-icon">📦</div>
+                <div class="card-title">Spawnere</div>
+            </div>
+
+            <div class="store-card" onclick="showSection('tagsSection')">
+                <div class="card-icon">🏷️</div>
+                <div class="card-title">Tags</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECȚIUNEA GRADE -->
+    <div id="ranksSection" class="page-section">
+        <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
+        <div class="section-title">Grade Legendare</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-name" style="color: #ffd700;">Grad OG</div>
+                <div class="item-desc">Beneficii:<br>/kit<br>/grindstone<br>/repair<br>/anvil</div>
+                <div class="item-price">19.99 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Grad OG', 19.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Grad OG', 19.99)">+ Coș</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-name" style="color: #00ffff;">Grad Nova</div>
+                <div class="item-desc">Beneficii:<br>/kit<br>/grindstone<br>/repair<br>/anvil</div>
+                <div class="item-price">14.99 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Grad Nova', 14.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Grad Nova', 14.99)">+ Coș</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-name" style="color: #00bfff;">Grad CPVP</div>
+                <div class="item-desc">Beneficii:<br>/kit<br>/grindstone<br>/repair<br>/anvil</div>
+                <div class="item-price">4.99 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Grad CPVP', 4.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Grad CPVP', 4.99)">+ Coș</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-name" style="color: #ff69b4;">Grad Amethyst</div>
+                <div class="item-desc">Beneficii:<br>/kit<br>/grindstone<br>/repair<br>/anvil</div>
+                <div class="item-price">9.99 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Grad Amethyst', 9.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Grad Amethyst', 9.99)">+ Coș</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECȚIUNEA CHEI -->
+    <div id="keysSection" class="page-section">
+        <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
+        <div class="section-title">🎃 Chei de Cufăr - Halloween 🎃</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-name" style="color: #ff8c00;">🎃 Key Halloween</div>
+                <div class="item-desc">Cheie înspăimântătoare cu recompense unice de sezon.</div>
+                <div class="item-price">1.49 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('🎃 Key Halloween', 1.49)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('🎃 Key Halloween', 1.49)">+ Coș</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-name">🔮 Key Amethyst</div>
+                <div class="item-desc">Descuie cufărul legendar cu efecte mov neon.</div>
+                <div class="item-price">2.99 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('🔮 Key Amethyst', 2.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('🔮 Key Amethyst', 2.99)">+ Coș</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-name">Key Prime</div>
+                <div class="item-desc">Cheie specială pentru recompense unice.</div>
+                <div class="item-price">0.99 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Key Prime', 0.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Key Prime', 0.99)">+ Coș</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-name">Key Crimson</div>
+                <div class="item-desc">Descuie arsenalul ascuns de luptă.</div>
+                <div class="item-price">0.99 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Key Crimson', 0.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Key Crimson', 0.99)">+ Coș</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-name" style="color: #ffd700;">Key Gold</div>
+                <div class="item-desc">Cheie aurită cu premii strălucitoare.</div>
+                <div class="item-price">0.99 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Key Gold', 0.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Key Gold', 0.99)">+ Coș</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECȚIUNEA POINTS -->
+    <div id="pointsSection" class="page-section">
+        <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
+        <div class="section-title">Pachete de Points</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-name">100 Points</div>
+                <div class="item-desc">Fonduri rapide pentru magazinul din joc.</div>
+                <div class="item-price">0.29 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('100 Points', 0.29)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('100 Points', 0.29)">+ Coș</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-name">500 Points</div>
+                <div class="item-desc">Pachet avantajos de points pentru upgrade-uri.</div>
+                <div class="item-price">1.99 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('500 Points', 1.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('500 Points', 1.99)">+ Coș</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-name">750 Points</div>
+                <div class="item-desc">Resurse extinse pentru dominație totală.</div>
+                <div class="item-price">2.49 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('750 Points', 2.49)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('750 Points', 2.49)">+ Coș</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-name">1500 Points</div>
+                <div class="item-desc">Pachetul clasic de points pentru upgrade-uri mari.</div>
+                <div class="item-price">4.99 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('1500 Points', 4.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('1500 Points', 4.99)">+ Coș</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-name">3000 Points</div>
+                <div class="item-desc">Rezerve masive pentru jucătorii avansați.</div>
+                <div class="item-price">9.99 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('3000 Points', 9.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('3000 Points', 9.99)">+ Coș</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-name">5000 Points</div>
+                <div class="item-desc">Pachetul suprem pentru supremație absolută.</div>
+                <div class="item-price">14.99 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('5000 Points', 14.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('5000 Points', 14.99)">+ Coș</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-name">10000 Points</div>
+                <div class="item-desc">Pachetul maxim pentru cei mai dedicați jucători.</div>
+                <div class="item-price">22.49 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('10000 Points', 22.49)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('10000 Points', 22.49)">+ Coș</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECȚIUNEA SPAWNERE -->
+    <div id="spawnersSection" class="page-section">
+        <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
+        <div class="section-title">Spawnere Disponibile</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-name">Spawner Skeleton</div>
+                <div class="item-desc">Spawner pentru oase și experiență.</div>
+                <div class="item-price">0.49 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Spawner Skeleton', 0.49)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Spawner Skeleton', 0.49)">+ Coș</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-name">Cole x2</div>
+                <div class="item-desc">Spawner pentru producție de cărbune.</div>
+                <div class="item-price">0.99 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Cole x2', 0.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Cole x2', 0.99)">+ Coș</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-name">Spawner Iron</div>
+                <div class="item-desc">Spawner pentru producție de fier.</div>
+                <div class="item-price">0.99 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Spawner Iron', 0.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Spawner Iron', 0.99)">+ Coș</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-name">Spawner Gold</div>
+                <div class="item-desc">Spawner pentru resurse de aur.</div>
+                <div class="item-price">1.49 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Spawner Gold', 1.49)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Spawner Gold', 1.49)">+ Coș</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-name">Spawner Emerald</div>
+                <div class="item-desc">Spawner avansat pentru smaralde.</div>
+                <div class="item-price">1.99 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Spawner Emerald', 1.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Spawner Emerald', 1.99)">+ Coș</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-name">Spawner Diamond</div>
+                <div class="item-desc">Spawner suprem pentru diamante.</div>
+                <div class="item-price">2.99 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckout('Spawner Diamond', 2.99)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addToCart('Spawner Diamond', 2.99)">+ Coș</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECȚIUNEA TAGS -->
+    <div id="tagsSection" class="page-section">
+        <div class="back-btn" onclick="showMain()">← Înapoi la meniu</div>
+        <div class="section-title">Tag-uri Exclusive</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-name">Tag Personalizat</div>
+                <div class="item-desc">Scrie mai jos textul dorit pentru tag-ul tău pe chat:</div>
+                <input type="text" id="customTagName" class="tag-input-box" placeholder="Ex: [Rege], [Spooky]">
+                <div class="item-price">2 euro</div>
+                <div class="btn-container">
+                    <button class="buy-btn" onclick="openCheckoutTag(2)">Cumpără</button>
+                    <button class="cart-add-btn" onclick="addTagToCart(2)">+ Coș</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALUL DE PLATĂ / COȘ -->
+    <div id="checkoutModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeCheckout()">&times;</button>
+            <div class="modal-title" id="modalTitleText">Finalizează Comanda</div>
+            <div class="modal-details" id="modalDetails"></div>
+            
+            <div class="modal-input-group">
+                <label>Nume jucător Minecraft:</label>
+                <input type="text" id="playerNameInput" class="modal-input-field" placeholder="Scrie Numele Tău">
+            </div>
+
+            <div id="singleQtyContainer">
+                <div style="margin-bottom: 8px; font-size: 0.9rem; color: #ffb366; text-align: left;">Alege cantitatea dorită:</div>
+                <div class="quantity-control-modal">
+                    <button class="qty-btn" onclick="changeModalQty(-1)">-</button>
+                    <input type="number" id="modalQtyInput" class="qty-input" value="1" min="1" oninput="updateModalViewFromInput()">
+                    <button class="qty-btn" onclick="changeModalQty(1)">+</button>
+                </div>
+            </div>
+
+            <div class="modal-input-group">
+                <label>Cod de reducere:</label>
+                <div class="promo-container">
+                    <input type="text" id="promoCodeInput" class="modal-input-field" placeholder="Introdu codul (ex: mafia)">
+                    <button class="promo-btn" onclick="applyPromoCode()">Aplică</button>
+                </div>
+            </div>
+            <div id="promoMessage" style="font-size: 0.85rem; margin-bottom: 10px; text-align: left;"></div>
+
+            <div id="modalTotalPrice" style="margin-bottom: 20px; font-weight: bold;"></div>
+
+            <div class="paysafecard-box" onclick="proceedToPayment()">
+                <span class="paysafe-logo">paysafecard</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 AmethystSMP Store • Toate drepturile rezervate
+    </footer>
+
+    <script>
+        let cart = [];
+        let isCartCheckout = false;
+        let currentItemName = "";
+        let currentBasePrice = 0;
+        let discountActive = false;
+
+        function copyIP() {
+            navigator.clipboard.writeText("play.amethyst-smp.ro");
+            var hint = document.getElementById("copyHint");
+            hint.innerText = "Copiat!";
+            hint.style.color = "#00ffff";
+            setTimeout(() => {
+                hint.innerText = "Copiază IP";
+                hint.style.color = "#aaa";
+            }, 2000);
+        }
+
+        function showSection(sectionId) {
+            document.getElementById('mainMenu').style.display = 'none';
+            var sections = document.getElementsByClassName('page-section');
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].style.display = 'none';
+            }
+            var target = document.getElementById(sectionId);
+            if (target) {
+                target.style.display = 'block';
+            }
+        }
+
+        function showMain() {
+            var sections = document.getElementsByClassName('page-section');
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].style.display = 'none';
+            }
+            document.getElementById('mainMenu').style.display = 'block';
+        }
+
+        function updateCartBadge() {
+            let totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cartCount').innerText = totalCount;
+        }
+
+        function addToCart(name, price) {
+            let existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ name: name, price: price, qty: 1 });
+            }
+            updateCartBadge();
+            alert(`Ai adăugat "${name}" în coș!`);
+        }
+
+        function addTagToCart(price) {
+            let tagInput = document.getElementById('customTagName').value.trim();
+            if (!tagInput) {
+                alert("Te rog să introduci textul pentru tag!");
+                return;
+            }
+            let fullName = `Tag Personalizat: "${tagInput}"`;
+            addToCart(fullName, price);
+            document.getElementById('customTagName').value = "";
+        }
+
+        function openCheckout(name, price) {
+            isCartCheckout = false;
+            currentItemName = name;
+            currentBasePrice = price;
+            discountActive = false;
+            document.getElementById('promoCodeInput').value = "";
+            document.getElementById('promoMessage').innerText = "";
+            document.getElementById('modalQtyInput').value = 1;
+            document.getElementById('singleQtyContainer').style.display = 'block';
+            document.getElementById('modalTitleText').innerText = "Finalizează Comanda";
+            document.getElementById('modalDetails').innerHTML = `Produs: <b>${name}</b><br>Preț unitar: <b>${price} euro</b>`;
+            updateModalPriceDisplay();
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function openCheckoutTag(price) {
+            let tagInput = document.getElementById('customTagName').value.trim();
+            if (!tagInput) {
+                alert("Te rog să introduci textul pentru tag!");
+                return;
+            }
+            openCheckout(`Tag Personalizat: "${tagInput}"`, price);
+        }
+
+        function openCartModal() {
+            if (cart.length === 0) {
+                alert("Coșul tău este gol!");
+                return;
+            }
+            isCartCheckout = true;
+            discountActive = false;
+            document.getElementById('promoCodeInput').value = "";
+            document.getElementById('promoMessage').innerText = "";
+            document.getElementById('singleQtyContainer').style.display = 'none';
+            document.getElementById('modalTitleText').innerText = "Coșul Tău de Cumpărături";
+            
+            let detailsHtml = "";
+            cart.forEach((item, index) => {
+                detailsHtml += `
+                    <div class="cart-item-row">
+                        <span><b>${item.name}</b> (${item.price}€)</span>
+                        <div class="cart-item-actions">
+                            <span>x${item.qty}</span>
+                            <button class="qty-btn" style="width:22px;height:22px;font-size:0.8rem;" onclick="changeCartQty(${index}, -1)">-</button>
+                            <button class="qty-btn" style="width:22px;height:22px;font-size:0.8rem;" onclick="changeCartQty(${index}, 1)">+</button>
+                            <button class="qty-btn" style="width:22px;height:22px;font-size:0.8rem;background:#500;" onclick="removeFromCart(${index})">×</button>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('modalDetails').innerHTML = detailsHtml;
+            updateModalPriceDisplay();
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function changeModalQty(amount) {
+            let input = document.getElementById('modalQtyInput');
+            let val = parseInt(input.value) + amount;
+            if (val < 1) val = 1;
+            input.value = val;
+            updateModalPriceDisplay();
+        }
+
+        function updateModalViewFromInput() {
+            let input = document.getElementById('modalQtyInput');
+            if (parseInt(input.value) < 1 || isNaN(input.value)) {
+                input.value = 1;
+            }
+            updateModalPriceDisplay();
+        }
+
+        function changeCartQty(index, amount) {
+            cart[index].qty += amount;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartBadge();
+            if (cart.length === 0) {
+                closeCheckout();
+            } else {
+                openCartModal();
+            }
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartBadge();
+            if (cart.length === 0) {
+                closeCheckout();
+            } else {
+                openCartModal();
+            }
+        }
+
+        function applyPromoCode() {
+            let code = document.getElementById('promoCodeInput').value.trim().toLowerCase();
+            let msg = document.getElementById('promoMessage');
+            if (code === "mafia") {
+                discountActive = true;
+                msg.style.color = "#00ffff";
+                msg.innerText = "Cod aplicat cu succes! Reducere de 10% activată.";
+            } else {
+                discountActive = false;
+                msg.style.color = "#ff4444";
+                msg.innerText = "Cod invalid!";
+            }
+            updateModalPriceDisplay();
+        }
+
+        function updateModalPriceDisplay() {
+            let total = 0;
+            if (!isCartCheckout) {
+                let qty = parseInt(document.getElementById('modalQtyInput').value) || 1;
+                total = currentBasePrice * qty;
+            } else {
+                total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            }
+
+            if (discountActive) {
+                total = total * 0.9;
+            }
+
+            document.getElementById('modalTotalPrice').innerHTML = `Total de plată: <span style="color: #ffb366; font-size: 1.2rem;">${total.toFixed(2)} euro</span>`;
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkoutModal').style.display = 'none';
+        }
+
+        function proceedToPayment() {
+            let playerName = document.getElementById('playerNameInput').value.trim();
+            if (!playerName) {
+                alert("Te rog să introduci numele tău de jucător Minecraft!");
+                return;
+            }
+            alert(`Se procesează plata prin Paysafecard pentru jucătorul ${playerName}! Vei fi redirecționat.`);
+            closeCheckout();
+            if (isCartCheckout) {
+                cart = [];
+                updateCartBadge();
+            }
+        }
+    </script>
+</body>
+</html>
